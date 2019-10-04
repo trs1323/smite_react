@@ -4,6 +4,7 @@ import md5 from 'md5';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Player from './Player';
 import '../App.css';
+import uuid from 'uuid'
 
 export default class Seach extends Component {
     constructor(props) {
@@ -11,6 +12,7 @@ export default class Seach extends Component {
         this.state = { value: '', api: 'searchplayers', name: '', player_id: '', portal_id: '' }
         this.onsubmit = this.onsubmit.bind(this)
         this.onchange = this.onchange.bind(this)
+        this.setPlayer = this.setPlayer.bind(this)
     }
 
     onsubmit(event) {
@@ -22,47 +24,89 @@ export default class Seach extends Component {
         Axios.get(`https://cors-anywhere.herokuapp.com/http://api.smitegame.com/smiteapi.svc/${this.state.api}json/${this.props.devid}/${signature}/${this.props.session}/${this.props.timestamp}/${username}`)
             .then(res => {
                 console.log(res);
-                this.setState({ name: res.data[0].Name, player_id: res.data[0].player_id, portal_id: res.data[0].portal_id })
+                this.setState({ data: res.data })
             })
-            .catch(err => console.log(err))
+            .catch(err => {
+                alert('404 Please try again')
+                console.log(err)
+            })
 
 
     }
 
+
+    //sets player_id to state for stat lookup
+    setPlayer(event) {
+        this.setState({ player_id: event.target.id })
+        this.props.change(event.target.id)
+        console.log(event.target.id)
+    }
+
+
+    //sets the name typed in to lookup users
     onchange(event) {
         this.setState({ value: event.target.value })
 
     }
 
+    componentDidUpdate() {
+        console.log('update')
+    }
+
     render() {
-        var player = this.state.player_id
+        var player = this.state.player_id;
         const devid = this.props.devid;
         const session = this.props.session;
         var timestamp = this.props.timestamp
         const authkey = this.props.authkey;
         return (
-            <Router>
-                <div>
-                    <div className='search'>
-                        <form onSubmit={this.onsubmit}>
-                            <input type="text" onChange={this.onchange} value={this.state.value}></input> <input type="submit" value="Search Player"></input>
-                        </form>
-                    </div>
-                    <Link to='/player'><h4>{this.state.name}</h4></Link>
 
-                    <Switch>
-                        <Route path="/player">
-                            <Player
-                                player={player}
-                                devid={devid}
-                                session={session}
-                                timestamp={timestamp}
-                                authkey={authkey}
-                            />
-                        </Route>
-                    </Switch>
+            <div>
+
+                <div className="search-bg">
+                    <div className='search'>
+                        <div className="btn-family">
+                            <div className="btn">
+                                <Link to="/">Home</Link></div>
+                            <div className="btn">
+                                <Link to="/seach">Players</Link></div>
+                            <div className="btn">
+                                <Link to="/gods">Gods</Link></div>
+                            <div className="btn">
+                                <Link to="/items">Items</Link></div>
+                        </div>
+                        <div className="search-form">
+                            <form onSubmit={this.onsubmit}>
+                                <input type="text" onChange={this.onchange} value={this.state.value}></input> <input type="submit" value="Search Player"></input>
+                            </form>
+                        </div>
+
+
+
+                        <div className="search-result">
+                            {this.state && this.state.data &&
+                                <Link to={{
+                                    pathname: "/player",
+                                    state: {
+                                        player: 'player'
+                                        // devid: { devid },
+                                        // session: { session },
+                                        // timestamp: { timestamp },
+                                        // authkey: { authkey }
+                                    }
+                                }} >{this.state.data.slice(0, 5).map((person, index) =>
+                                    <div key={uuid.v4()} className="nameIcon" onClick={this.setPlayer} >
+                                        <h4 key={uuid.v4()} id={person.player_id} >{person.Name}</h4>
+                                        <img key={uuid.v4()} src={require(`../img/icon/${person.portal_id}.png`)} alt="" />
+
+                                    </div>
+                                )}
+                                </Link>}
+                        </div>
+                    </div>
                 </div>
-            </Router>
+            </div >
+
 
         )
     }

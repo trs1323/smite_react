@@ -6,6 +6,15 @@ import md5 from 'md5'
 import Axios from 'axios';
 import { BrowserRouter as Router, Switch, Route, } from "react-router-dom";
 import '../App.css';
+import Player from './Player';
+import { AnimatedSwitch } from 'react-router-transition';
+
+function mapStyles(styles) {
+    return {
+        opacity: styles.opacity,
+        transform: `scale(${styles.scale})`,
+    };
+}
 
 export default class Main extends Component {
     constructor(props) {
@@ -13,8 +22,10 @@ export default class Main extends Component {
         this.state = {
             devId: 3359,
             authKey: 'A73937BDE832463B8251CFEE8FB45862',
-            session: ''
+            session: '',
+            player_id: ''
         }
+        this.childstate = this.childstate.bind(this)
     }
 
 
@@ -35,6 +46,10 @@ export default class Main extends Component {
 
     }
 
+    childstate(player) {
+        this.setState({ player_id: player })
+    }
+
     render() {
         var dt = new Date();
         var timestamp = `${
@@ -52,18 +67,41 @@ export default class Main extends Component {
         return (
             <Router>
                 <div className='main'>
-                    <Header />
-                    <Switch >
-                        <Route path="/">
+                    <AnimatedSwitch atEnter={{
+                        opacity: 0,
+                        scale: 2.0,
+                    }}
+                        atLeave={{
+                            opacity: 0
+
+                        }}
+                        atActive={{ opacity: 1 }}
+                        mapStyles={mapStyles}
+                        className="switch-wrapper">
+                        <Route exact path="/">
+                            <Header />
+                        </Route>
+
+                        <Route path="/seach">
                             <Seach
                                 dt={dt}
                                 timestamp={timestamp}
                                 devid={devid}
                                 authkey={authkey}
                                 session={session}
+                                change={this.childstate}
                             />
                         </Route>
-                    </Switch>
+
+                        <Route path="/player">
+                            <Player
+                                timestamp={timestamp}
+                                devid={devid}
+                                authkey={authkey}
+                                session={session}
+                                player_id={this.state.player_id} />
+                        </Route>
+                    </AnimatedSwitch>
                 </div>
             </Router>
         )
