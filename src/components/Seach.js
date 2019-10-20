@@ -1,10 +1,24 @@
 import React, { Component } from 'react'
 import Axios from 'axios';
 import md5 from 'md5';
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import Player from './Player';
+import { Link } from "react-router-dom";
 import '../App.css';
 import uuid from 'uuid'
+import { trackPromise } from 'react-promise-tracker'
+import { usePromiseTracker } from "react-promise-tracker";
+import Loader from 'react-loader-spinner';
+
+const LoadingIndicator = props => {
+    const { promiseInProgress } = usePromiseTracker();
+
+    return (
+        promiseInProgress &&
+        <div className="loader">
+            <Loader type="ThreeDots" color="#ba8c59" height="100" width="100" />
+        </div>
+    )
+}
+
 
 export default class Seach extends Component {
     constructor(props) {
@@ -15,21 +29,29 @@ export default class Seach extends Component {
         this.setPlayer = this.setPlayer.bind(this)
     }
 
+
+
     onsubmit(event) {
+        let config = {
+            headers: {
+                'Access-Control-Allow-Origin': '*',
+            }
+        }
         var username = this.state.value;
         this.setState({ value: '' });
         const signature = md5(`${this.props.devid}${this.state.api}${this.props.authkey}${this.props.timestamp}`)
         console.log('pressed')
         event.preventDefault();
-        Axios.get(`https://cors-anywhere.herokuapp.com/http://api.smitegame.com/smiteapi.svc/${this.state.api}json/${this.props.devid}/${signature}/${this.props.session}/${this.props.timestamp}/${username}`)
-            .then(res => {
-                console.log(res);
-                this.setState({ data: res.data })
-            })
-            .catch(err => {
-                alert('404 Please try again')
-                console.log(err)
-            })
+        trackPromise(
+            Axios.get(`https://cors-anywhere.herokuapp.com/http://api.smitegame.com/smiteapi.svc/${this.state.api}json/${this.props.devid}/${signature}/${this.props.session}/${this.props.timestamp}/${username}`, config)
+                .then(res => {
+                    console.log(res);
+                    this.setState({ data: res.data })
+                })
+                .catch(err => {
+                    alert('404 Please try again')
+                    console.log(err)
+                }))
 
 
     }
@@ -54,11 +76,11 @@ export default class Seach extends Component {
     }
 
     render() {
-        var player = this.state.player_id;
-        const devid = this.props.devid;
-        const session = this.props.session;
-        var timestamp = this.props.timestamp
-        const authkey = this.props.authkey;
+        // var player = this.state.player_id;
+        // const devid = this.props.devid;
+        // const session = this.props.session;
+        // var timestamp = this.props.timestamp
+        // const authkey = this.props.authkey;
         return (
 
             <div>
@@ -84,17 +106,11 @@ export default class Seach extends Component {
 
 
                         <div className="search-result">
+                            <LoadingIndicator />
                             {this.state && this.state.data &&
                                 <Link to={{
-                                    pathname: "/player",
-                                    state: {
-                                        player: 'player'
-                                        // devid: { devid },
-                                        // session: { session },
-                                        // timestamp: { timestamp },
-                                        // authkey: { authkey }
-                                    }
-                                }} >{this.state.data.slice(0, 5).map((person, index) =>
+                                    pathname: "/player"
+                                }} >{this.state.data.slice(0, 5).map((person) =>
                                     <div key={uuid.v4()} className="nameIcon" onClick={this.setPlayer} >
                                         <h4 key={uuid.v4()} id={person.player_id} >{person.Name}</h4>
                                         <img key={uuid.v4()} src={require(`../img/icon/${person.portal_id}.png`)} alt="" />

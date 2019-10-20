@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import Axios from 'axios';
 import md5 from 'md5';
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import Seach from './Seach'
+import { Link } from "react-router-dom";
+
 
 export default class Player extends Component {
     constructor(props) {

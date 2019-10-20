@@ -7,14 +7,10 @@ import Axios from 'axios';
 import { BrowserRouter as Router, Switch, Route, } from "react-router-dom";
 import '../App.css';
 import Player from './Player';
-import { AnimatedSwitch } from 'react-router-transition';
+import Gods from './Gods';
+import GodId from './GodId';
 
-function mapStyles(styles) {
-    return {
-        opacity: styles.opacity,
-        transform: `scale(${styles.scale})`,
-    };
-}
+
 
 export default class Main extends Component {
     constructor(props) {
@@ -23,10 +19,13 @@ export default class Main extends Component {
             devId: 3359,
             authKey: 'A73937BDE832463B8251CFEE8FB45862',
             session: '',
-            player_id: ''
+            player_id: '',
+            god_id: ''
         }
         this.childstate = this.childstate.bind(this)
+        this.setGodState = this.setGodState.bind(this)
     }
+
 
 
     componentDidMount() {
@@ -46,8 +45,14 @@ export default class Main extends Component {
 
     }
 
+
+    //grabs player id from search bar
     childstate(player) {
         this.setState({ player_id: player })
+    }
+
+    setGodState(god) {
+        this.setState({ god_id: god })
     }
 
     render() {
@@ -67,17 +72,7 @@ export default class Main extends Component {
         return (
             <Router>
                 <div className='main'>
-                    <AnimatedSwitch atEnter={{
-                        opacity: 0,
-                        scale: 2.0,
-                    }}
-                        atLeave={{
-                            opacity: 0
-
-                        }}
-                        atActive={{ opacity: 1 }}
-                        mapStyles={mapStyles}
-                        className="switch-wrapper">
+                    <Switch>
                         <Route exact path="/">
                             <Header />
                         </Route>
@@ -101,7 +96,25 @@ export default class Main extends Component {
                                 session={session}
                                 player_id={this.state.player_id} />
                         </Route>
-                    </AnimatedSwitch>
+
+                        <Route path="/gods">
+                            <Gods
+                                timestamp={timestamp}
+                                devid={devid}
+                                authkey={authkey}
+                                session={session}
+                                god_id={this.setGodState} />
+                        </Route>
+
+                        <Route path="/god_id">
+                            <GodId
+                                timestamp={timestamp}
+                                devid={devid}
+                                authkey={authkey}
+                                session={session}
+                                god_id={this.state.god_id} />
+                        </Route>
+                    </Switch>
                 </div>
             </Router>
         )
