@@ -88,6 +88,7 @@ export default class Seach extends Component {
                 <div className="search-bg">
                     <div className='search'>
                         <div className="btn-family">
+
                             <div className="btn">
                                 <Link to="/">Home</Link></div>
                             <div className="btn">

@@ -11,8 +11,8 @@ export default class Header extends Component {
             <div className="header">
                 <div className="ocp-background">
 
-                    <img src={require("../../img/Smite.png")} alt="s"></img>
-                    <p>Smite Stats and Data for Nerds</p>
+                    {/* <img src={require("../../img/Smite.png")} alt="s"></img> */}
+
                     <div className="btn-family">
                         <div className="btn">
                             <Link to="/">Home</Link></div>
@@ -23,6 +23,7 @@ export default class Header extends Component {
                         <div className="btn">
                             <Link to="/items">Items</Link></div>
                     </div>
+                    <p>Smite Stats and Data for Nerds</p>
                 </div>
             </div>
 

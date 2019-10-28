@@ -61,6 +61,7 @@ export default class GodId extends Component {
                     StarterItems: this.state.RecItems.filter((item) => {
                         return item.Category === "Starter"
                     }),
+
                     CoreItems: this.state.RecItems.filter((item) => {
                         return item.Category === "Core"
                     }),
@@ -71,13 +72,20 @@ export default class GodId extends Component {
                         return item.Category === "Defensive"
                     })
                 })
+                this.setState({
+                    StaterItemsId: this.state.StarterItems.map((item) => {
+                        return item.item_id
+                    })
+                })
             })
-        //get all items
+        //get all items and filter thru to get the info for the reccommend items
         const signature3 = md5(`${this.props.devid}${this.state.api3}${this.props.authkey}${this.props.timestamp}`);
         Axios.get(`https://cors-anywhere.herokuapp.com/http://api.smitegame.com/smiteapi.svc/${this.state.api3}json/${this.props.devid}/${signature3}/${this.props.session}/${this.props.timestamp}/${this.state.lang}`)
             .then(res => {
                 this.setState({
-                    items: res.data
+                    AllItems: res.data,
+
+
                 })
             })
         //get skins for god
@@ -251,28 +259,19 @@ export default class GodId extends Component {
                             <div className={this.BuildisActive()}>
                                 <div className='starter'>
                                     <h1>Starter Items</h1>
-                                    {this.state.StarterItems.map((item) =>
-                                        <p key={uuid.v4()}>{item.Item}</p>
-                                    )}
+
                                 </div>
                                 <div className='core'>
                                     <h1>Core Items</h1>
-                                    {this.state.CoreItems.map((item) =>
-                                        <p key={uuid.v4()}>{item.Item}</p>
-                                    )}
+
                                 </div>
                                 <div className='damage'>
                                     <h1>Damage Items</h1>
-                                    {this.state.DamageItems.map((item) =>
-                                        <p key={uuid.v4()}>{item.Item}</p>
-                                    )}
+
                                 </div>
                                 <div className='defensive'>
                                     <h1>Defensive Items</h1>
-                                    {this.state.DefensiveItems.map((item) =>
-                                        <p key={uuid.v4()}>{item.Item}</p>
 
-                                    )}
                                 </div>
                             </div>
 
