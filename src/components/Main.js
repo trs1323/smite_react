@@ -9,6 +9,7 @@ import '../App.css';
 import Player from './Player';
 import Gods from './Gods';
 import GodId from './GodId';
+import PlayerGods from './PlayerGods';
 
 
 
@@ -54,6 +55,7 @@ export default class Main extends Component {
     setGodState(god) {
         this.setState({ god_id: god })
     }
+
 
     render() {
         var dt = new Date();
@@ -113,6 +115,16 @@ export default class Main extends Component {
                                 authkey={authkey}
                                 session={session}
                                 god_id={this.state.god_id} />
+                        </Route>
+
+                        <Route path="/player_gods">
+                            <PlayerGods
+                                timestamp={timestamp}
+                                devid={devid}
+                                authkey={authkey}
+                                session={session}
+                                player_id={this.state.player_id}
+                            />
                         </Route>
                     </Switch>
                 </div>

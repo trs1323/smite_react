@@ -503,6 +503,12 @@
 /* Player Info page */
 .player-background{
   background: url(./img/background-player.jpg);
+  height: 100vh;
+  width: 100%;
+}
+
+.player-background-loaded{
+  background: url(./img/background-player.jpg);
   height: 100%;
   width: 100%;
 }
@@ -519,37 +525,62 @@
   background: #e6e6e6;
 }
 
-.player-heading{
-  display: flex;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-  padding-left: 2rem;
-  
-}
-
-.player-heading > h1:nth-child(1){
-  padding-right: 3rem;
-}
-
-.player-heading > h1:nth-child(2){
-  margin: auto;
-}
-
 .player{
   display: flex;
+justify-content: space-between;
 
+
+}
+
+.player_info_container{
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.player_info_container h1{
+  padding: 5px;
+  border-bottom: .5rem ridge #ba8c59;
 }
 
 
 .player_info{
+  margin: auto;
+  text-align: left;
   padding-left: 2rem;
   padding-right: 2rem;
 }
 
 .player_info img{
+  margin-bottom: 5px;
   height: 128px;
   width: auto;
   border: .5rem ridge #ba8c59;
+  box-shadow: 11px 7px 17px 0px rgba(10, 10, 10, 0.473);
+}
+
+.match-history-container{
+  text-align: center;
+}
+
+.match-history-container h1{
+  padding: 5px;
+  border-bottom: .5rem ridge #ba8c59;
+}
+
+.match-history > div:nth-child(2) > svg:nth-child(1){
+  overflow: inherit;
+}
+
+.rank-container{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.rank-container h1{
+  padding: 5px;
+  border-bottom: .5rem ridge #ba8c59;
 }
 
 .ranked{
