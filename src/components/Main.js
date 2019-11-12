@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
-import Header from './layout/Header';
 import Seach from './Seach';
 import md5 from 'md5'
-//import CreateSession from './CreateSession';
 import Axios from 'axios';
 import { BrowserRouter as Router, Switch, Route, } from "react-router-dom";
 import '../App.css';
@@ -10,7 +8,8 @@ import Player from './Player';
 import Gods from './Gods';
 import GodId from './GodId';
 import PlayerGods from './PlayerGods';
-
+import Home from './Home'
+import Items from './Items'
 
 
 export default class Main extends Component {
@@ -27,9 +26,13 @@ export default class Main extends Component {
         this.setGodState = this.setGodState.bind(this)
     }
 
-
-
     componentDidMount() {
+        let config = {
+            headers: {
+                'Access-Control-Allow-Origin': '*',
+                'Vary': 'Origin'
+            }
+        }
         var dt = new Date();
         var timestamp = `${
             dt.getFullYear().toString().padStart(4, '0')}${
@@ -38,12 +41,13 @@ export default class Main extends Component {
             dt.getUTCHours().toString().padStart(2, '0')}${
             dt.getUTCMinutes().toString().padStart(2, '0')}${
             dt.getUTCSeconds().toString().padStart(2, '0')}`;
-        console.log(dt.getUTCDate())
         var signature = md5(`${this.state.devId}createsession${this.state.authKey}${timestamp}`);
-        Axios.get(`https://cors-anywhere.herokuapp.com/http://api.smitegame.com/smiteapi.svc/createsessionjson/${this.state.devId}/${signature}/${timestamp}`)
+        Axios.get(`https://cors-anywhere.herokuapp.com/http://api.smitegame.com/smiteapi.svc/createsessionjson/${this.state.devId}/${signature}/${timestamp}`, config)
             .then(res => this.setState({ session: res.data.session_id }))
-            .catch(err => console.log(err))
-
+            .catch(err => {
+                alert('404 Please try again')
+                console.log(err)
+            })
     }
 
 
@@ -68,7 +72,6 @@ export default class Main extends Component {
             dt.getUTCSeconds().toString().padStart(2, '0')}`;
         const devid = this.state.devId;
         const authkey = this.state.authKey;
-        //var signature = md5(`${this.devId}${api}${this.authKey}${timestamp}`);
         var session = this.state.session;
 
         return (
@@ -76,55 +79,72 @@ export default class Main extends Component {
                 <div className='main'>
                     <Switch>
                         <Route exact path="/">
-                            <Header />
+                            {this.state && this.state.session &&
+                                <Home
+                                    dt={dt}
+                                    timestamp={timestamp}
+                                    devid={devid}
+                                    authkey={authkey}
+                                    session={session}
+                                    god_id={this.setGodState}
+                                />}
                         </Route>
-
                         <Route path="/seach">
-                            <Seach
-                                dt={dt}
-                                timestamp={timestamp}
-                                devid={devid}
-                                authkey={authkey}
-                                session={session}
-                                change={this.childstate}
-                            />
+                            {this.state && this.state.session &&
+                                <Seach
+                                    dt={dt}
+                                    timestamp={timestamp}
+                                    devid={devid}
+                                    authkey={authkey}
+                                    session={session}
+                                    change={this.childstate}
+                                />}
                         </Route>
-
                         <Route path="/player">
-                            <Player
-                                timestamp={timestamp}
-                                devid={devid}
-                                authkey={authkey}
-                                session={session}
-                                player_id={this.state.player_id} />
+                            {this.state && this.state.session &&
+                                <Player
+                                    timestamp={timestamp}
+                                    devid={devid}
+                                    authkey={authkey}
+                                    session={session}
+                                    player_id={this.state.player_id} />}
                         </Route>
-
                         <Route path="/gods">
-                            <Gods
-                                timestamp={timestamp}
-                                devid={devid}
-                                authkey={authkey}
-                                session={session}
-                                god_id={this.setGodState} />
+                            {this.state && this.state.session &&
+                                <Gods
+                                    timestamp={timestamp}
+                                    devid={devid}
+                                    authkey={authkey}
+                                    session={session}
+                                    god_id={this.setGodState} />}
                         </Route>
-
                         <Route path="/god_id">
-                            <GodId
-                                timestamp={timestamp}
-                                devid={devid}
-                                authkey={authkey}
-                                session={session}
-                                god_id={this.state.god_id} />
+                            {this.state && this.state.session &&
+                                <GodId
+                                    timestamp={timestamp}
+                                    devid={devid}
+                                    authkey={authkey}
+                                    session={session}
+                                    god_id={this.state.god_id} />}
                         </Route>
-
                         <Route path="/player_gods">
-                            <PlayerGods
-                                timestamp={timestamp}
-                                devid={devid}
-                                authkey={authkey}
-                                session={session}
-                                player_id={this.state.player_id}
-                            />
+                            {this.state && this.state.session &&
+                                <PlayerGods
+                                    timestamp={timestamp}
+                                    devid={devid}
+                                    authkey={authkey}
+                                    session={session}
+                                    player_id={this.state.player_id}
+                                />}
+                        </Route>
+                        <Route path="/items">
+                            {this.state && this.state.session &&
+                                <Items
+                                    timestamp={timestamp}
+                                    devid={devid}
+                                    authkey={authkey}
+                                    session={session}
+                                />}
                         </Route>
                     </Switch>
                 </div>

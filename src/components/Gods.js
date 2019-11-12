@@ -6,6 +6,8 @@ import uuid from 'uuid'
 import { trackPromise } from 'react-promise-tracker'
 import { usePromiseTracker } from "react-promise-tracker";
 import Loader from 'react-loader-spinner';
+import Header from './layout/Header'
+import Footer from './layout/Footer';
 
 const LoadingIndicator = props => {
     const { promiseInProgress } = usePromiseTracker();
@@ -36,7 +38,6 @@ export default class Gods extends Component {
     }
 
     setGodId(event) {
-        console.log(`god id: ${event.target.id}`)
         this.props.god_id(event.target.id)
     }
 
@@ -56,9 +57,6 @@ export default class Gods extends Component {
                 active: event.target.id
             })
         }
-
-
-
     }
 
     componentDidMount() {
@@ -82,16 +80,7 @@ export default class Gods extends Component {
     render() {
         return (
             <div className={this.isLoaded()}>
-                <div className="btn-family">
-                    <div className="btn">
-                        <Link to="/">Home</Link></div>
-                    <div className="btn">
-                        <Link to="/seach">Players</Link></div>
-                    <div className="btn">
-                        <Link to="/gods">Gods</Link></div>
-                    <div className="btn">
-                        <Link to="/items">Items</Link></div>
-                </div>
+                <Header />
                 <div className="god-title">
                     <h1>Gods</h1>
                     <div className="god-sort">
@@ -118,14 +107,11 @@ export default class Gods extends Component {
                             {this.state.data.map((god) =>
                                 <Link key={uuid.v4()} to={{ pathname: "/god_id" }}>
                                     <div key={uuid.v4()} className="single-god" onClick={this.setGodId}>
-
                                         <img key={uuid.v4()} src={god.godIcon_URL} alt="" id={god.id} />
-
                                         <p key={uuid.v4()}  >{god.Name}</p>
                                         <h5 key={uuid.v4()} ><i>{god.Title}</i></h5>
                                         <div className="class">
                                             <h6 key={uuid.v4()}>{god.Roles}</h6>
-
                                             <img key={uuid.v4()} src={require(`../img/class/${god.Roles.replace(/\s/g, '')}.png`)} alt=""></img></div>
                                         <div className="pantheon">
                                             <h6 key={uuid.v4()}>{god.Pantheon}</h6>
@@ -133,8 +119,8 @@ export default class Gods extends Component {
                                     </div>
                                 </Link>
                             )}
-
                         </div>}</div>
+                <Footer />
             </div>
         )
     }

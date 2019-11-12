@@ -7,6 +7,8 @@ import { trackPromise } from 'react-promise-tracker'
 import { usePromiseTracker } from "react-promise-tracker";
 import Loader from 'react-loader-spinner';
 import PieChart from 'react-minimal-pie-chart';
+import Header from './layout/Header'
+import Footer from './layout/Footer';
 
 //loading bar
 const LoadingIndicator = props => {
@@ -226,7 +228,6 @@ export default class Player extends Component {
         trackPromise(
             Axios.get(`https://cors-anywhere.herokuapp.com/http://api.smitegame.com/smiteapi.svc/${this.state.api}json/${this.props.devid}/${signature}/${this.props.session}/${this.props.timestamp}/${this.props.player_id}`, config)
                 .then(res => {
-                    console.log(res);
                     this.setState({
                         res: res.data[0]
                     })
@@ -281,7 +282,6 @@ export default class Player extends Component {
         trackPromise(
             Axios.get(`https://cors-anywhere.herokuapp.com/http://api.smitegame.com/smiteapi.svc/${this.state.api5}json/${this.props.devid}/${signature5}/${this.props.session}/${this.props.timestamp}/${this.props.player_id}/426`, config)
                 .then(res => {
-                    console.log(res)
                     this.setState({
                         ConquestHistory: res.data
                     })
@@ -295,7 +295,6 @@ export default class Player extends Component {
         signature5 = md5(`${this.props.devid}${this.state.api5}${this.props.authkey}${this.props.timestamp}`)
         Axios.get(`https://cors-anywhere.herokuapp.com/http://api.smitegame.com/smiteapi.svc/${this.state.api5}json/${this.props.devid}/${signature5}/${this.props.session}/${this.props.timestamp}/${this.props.player_id}/448`, config)
             .then(res => {
-                console.log(res)
                 this.setState({
                     JoustHistory: res.data
                 })
@@ -309,7 +308,6 @@ export default class Player extends Component {
         signature5 = md5(`${this.props.devid}${this.state.api5}${this.props.authkey}${this.props.timestamp}`)
         Axios.get(`https://cors-anywhere.herokuapp.com/http://api.smitegame.com/smiteapi.svc/${this.state.api5}json/${this.props.devid}/${signature5}/${this.props.session}/${this.props.timestamp}/${this.props.player_id}/435`, config)
             .then(res => {
-                console.log(res)
                 this.setState({
                     ArenaHistory: res.data
                 })
@@ -323,7 +321,6 @@ export default class Player extends Component {
         signature5 = md5(`${this.props.devid}${this.state.api5}${this.props.authkey}${this.props.timestamp}`)
         Axios.get(`https://cors-anywhere.herokuapp.com/http://api.smitegame.com/smiteapi.svc/${this.state.api5}json/${this.props.devid}/${signature5}/${this.props.session}/${this.props.timestamp}/${this.props.player_id}/445`, config)
             .then(res => {
-                console.log(res)
                 this.setState({
                     AssaltHistory: res.data
                 })
@@ -337,7 +334,6 @@ export default class Player extends Component {
         signature5 = md5(`${this.props.devid}${this.state.api5}${this.props.authkey}${this.props.timestamp}`)
         Axios.get(`https://cors-anywhere.herokuapp.com/http://api.smitegame.com/smiteapi.svc/${this.state.api5}json/${this.props.devid}/${signature5}/${this.props.session}/${this.props.timestamp}/${this.props.player_id}/466`, config)
             .then(res => {
-                console.log(res)
                 this.setState({
                     ClashHistory: res.data
                 })
@@ -351,7 +347,6 @@ export default class Player extends Component {
         signature5 = md5(`${this.props.devid}${this.state.api5}${this.props.authkey}${this.props.timestamp}`)
         Axios.get(`https://cors-anywhere.herokuapp.com/http://api.smitegame.com/smiteapi.svc/${this.state.api5}json/${this.props.devid}/${signature5}/${this.props.session}/${this.props.timestamp}/${this.props.player_id}/459`, config)
             .then(res => {
-                console.log(res)
                 this.setState({
                     SiegeHistory: res.data
                 })
@@ -604,26 +599,15 @@ export default class Player extends Component {
         return (
 
             <div className={this.isLoaded()}>
-                <div className="btn-family">
-                    <div className="btn">
-                        <Link to="/">Home</Link></div>
-                    <div className="btn">
-                        <Link to="/seach">Players</Link></div>
-                    <div className="btn">
-                        <Link to="/gods">Gods</Link></div>
-                    <div className="btn">
-                        <Link to="/items">Items</Link></div>
-                </div>
+                <Header />
                 <div className="player-container">
                     <LoadingIndicator />
                     {this.state && this.state.res && this.state.godranks && this.state.achievements &&
                         < div >
-
                             <div className="player">
                                 <div className="player_info_container">
                                     <h1>Stats</h1>
                                     <div className="player_info">
-
                                         {this.CheckAvatar()}
                                         {this.CheckName()}
                                         <h5>{this.state.res.Team_Name}</h5>
@@ -635,27 +619,23 @@ export default class Player extends Component {
                                         <p>Winrate: {((this.state.res.Wins / (this.state.res.Wins + this.state.res.Losses)) * 100).toFixed(2)}%</p>
                                     </div>
                                 </div>
-
                                 {this.state && this.state.ConquestHistory && this.state.ArenaHistory && this.state.JoustHistory && this.state.AssaltHistory && this.state.ClashHistory && this.state.SiegeHistory &&
                                     <div className='match-history-container'>
                                         {this.AddMatchs()}</div>}
-
                                 <div className="rank-container">
                                     <h1>Rank</h1>
                                     <div className="ranked">
-
                                         {this.CheckRankConquest()}
                                         {this.CheckRankJoust()}
                                         {this.CheckRankDuel()}
                                     </div>
                                 </div>
                             </div>
-
                             <h1 className="top-gods-title">Top Gods</h1>
                             <div className="top-god-container">
                                 {this.state.godranks.slice(0, 5).map((god) =>
                                     <div key={uuid.v4()} className="top-god">
-                                        <img key={uuid.v4()} src={`https://web2.hirez.com/smite/god-icons/${god.god.toString().toLowerCase().replace(/\s/g, '-')}.jpg`} alt='' />
+                                        <img key={uuid.v4()} src={`https://web2.hirez.com/smite/god-icons/${god.god.toString().toLowerCase().replace(/'/g, '').replace(/\s/g, '-')}.jpg`} alt='' />
                                         <h4 key={uuid.v4()}>{god.god}</h4>
                                         <p key={uuid.v4()}>Kills: {god.Kills}</p>
                                         <p key={uuid.v4()}>Deaths: {god.Deaths}</p>
@@ -699,9 +679,8 @@ export default class Player extends Component {
                         </div>
                     }
                 </div>
+                <Footer />
             </div >
-
-
         )
     }
 }

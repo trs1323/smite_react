@@ -7,6 +7,8 @@ import uuid from 'uuid'
 import { trackPromise } from 'react-promise-tracker'
 import { usePromiseTracker } from "react-promise-tracker";
 import Loader from 'react-loader-spinner';
+import Header from './layout/Header'
+import Footer from './layout/Footer';
 
 const LoadingIndicator = props => {
     const { promiseInProgress } = usePromiseTracker();
@@ -40,20 +42,16 @@ export default class Seach extends Component {
         var username = this.state.value;
         this.setState({ value: '' });
         const signature = md5(`${this.props.devid}${this.state.api}${this.props.authkey}${this.props.timestamp}`)
-        console.log('pressed')
         event.preventDefault();
         trackPromise(
             Axios.get(`https://cors-anywhere.herokuapp.com/http://api.smitegame.com/smiteapi.svc/${this.state.api}json/${this.props.devid}/${signature}/${this.props.session}/${this.props.timestamp}/${username}`, config)
                 .then(res => {
-                    console.log(res);
                     this.setState({ data: res.data })
                 })
                 .catch(err => {
                     alert('404 Please try again')
                     console.log(err)
                 }))
-
-
     }
 
 
@@ -61,7 +59,6 @@ export default class Seach extends Component {
     setPlayer(event) {
         this.setState({ player_id: event.target.id })
         this.props.change(event.target.id)
-        console.log(event.target.id)
     }
 
 
@@ -71,41 +68,18 @@ export default class Seach extends Component {
 
     }
 
-    componentDidUpdate() {
-        console.log('update')
-    }
 
     render() {
-        // var player = this.state.player_id;
-        // const devid = this.props.devid;
-        // const session = this.props.session;
-        // var timestamp = this.props.timestamp
-        // const authkey = this.props.authkey;
         return (
-
             <div>
-
                 <div className="search-bg">
                     <div className='search'>
-                        <div className="btn-family">
-
-                            <div className="btn">
-                                <Link to="/">Home</Link></div>
-                            <div className="btn">
-                                <Link to="/seach">Players</Link></div>
-                            <div className="btn">
-                                <Link to="/gods">Gods</Link></div>
-                            <div className="btn">
-                                <Link to="/items">Items</Link></div>
-                        </div>
+                        <Header />
                         <div className="search-form">
                             <form onSubmit={this.onsubmit}>
                                 <input type="text" onChange={this.onchange} value={this.state.value}></input> <input type="submit" value="Search Player"></input>
                             </form>
                         </div>
-
-
-
                         <div className="search-result">
                             <LoadingIndicator />
                             {this.state && this.state.data &&
@@ -115,11 +89,11 @@ export default class Seach extends Component {
                                     <div key={uuid.v4()} className="nameIcon" onClick={this.setPlayer} >
                                         <h4 key={uuid.v4()} id={person.player_id} >{person.Name}</h4>
                                         <img key={uuid.v4()} src={require(`../img/icon/${person.portal_id}.png`)} alt="" />
-
                                     </div>
                                 )}
                                 </Link>}
                         </div>
+                        <Footer />
                     </div>
                 </div>
             </div >

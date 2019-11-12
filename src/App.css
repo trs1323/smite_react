@@ -5,7 +5,9 @@
 }
 
 /*
+  gold text = #ffcb34
   gold color = #ba8c59
+  gold on hover = #9e774a
   dark blue = #2a374a
   */
 
@@ -22,6 +24,7 @@
   justify-content: center;
   align-items: center;
   margin: auto;
+  flex-direction: column;
 
 }
 
@@ -38,11 +41,17 @@
 /*Main title page */
 .header{
   height: 100vh;
-  width: 100vw;
+  width: 100%;
   background-image: url('./img/background.jpg');
   
-  
 }
+
+.header-loaded{
+height: 100%;
+width: 100%;
+  background-image: url('./img/background.jpg');
+}
+
 .ocp-background{
   background: rgba(77, 77, 77, 0.466);
   background-size: cover;
@@ -51,26 +60,239 @@
   width: 100%;
   height: 100%;
   display: flex;
-  
   align-items: center;
   margin: auto;
   flex-direction: column;
+  position: relative;
 }
 
-.header img{
-  height: 250px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 1rem;
-}
-.header p{
+
+.website-title{
   background: #2a374a;
-  border: .5rem ridge #ba8c59;
+  border: .3rem ridge #ba8c59;
   color: #ffcb34;
   padding: 5px;
+
+}
+
+.home{
+  margin-top: 1rem;
+  border: .5rem ridge #ba8c59;
+  background: rgb(223, 222, 222);
+  width: 75vw;
+  height: 100%;
+  box-shadow: 11px 7px 17px 0px rgba(10, 10, 10, 0.308);
+  display: flex;
+}
+
+.home-inside{
+  background: rgb(223, 222, 222);
+  display: flex;
+  width: 75vw;
+  height: 100%;
+}
+
+.home-info{
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  text-align: center;
+  width: 66%;
+}
+
+.patch-notes{
+  text-decoration: none;
+  position: relative;
+  width: 300px;
+  height: 237px;
+  margin-left: 2rem;
+}
+
+.patch-notes h2{
+  margin-bottom: .5rem;
+}
+
+.patch-notes img{
+  width: 100%;
+  border: .5rem ridge #ba8c59;
+  box-shadow: 11px 7px 17px 0px rgba(10, 10, 10, 0.308);
+}
+
+.patch-notes img:hover{
+  opacity: 90%;
+  border: .5rem ridge #9e774a;
+}
+
+.esports h2{
+  margin-bottom: .5rem;
+}
+
+.esports-img{
+  padding: .5rem;
+  background: #2a374a;
+  height: 200px;
+  width: 200px;
+  border: .5rem ridge #ba8c59;
+  box-shadow: 11px 7px 17px 0px rgba(10, 10, 10, 0.308);
+}
+
+.esports-img:hover{
+  border: .5rem ridge #9e774a;
+  background: #253041;
+}
+
+.patch-title{
+  text-align: center;
+  background: #2a374a;
+  position: absolute;
+  color: #ffcb34;
+  bottom: 3px;
+  right: 7px;
+  width: 95%;
+  border-top: .3rem ridge #ba8c59;
+}
+
+.free-gods-container{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  text-align: center;
+  margin-bottom: 7px;
+}
+
+.free-god{
+  color: black;
+}
+
+.free-gods{
+  display: flex;
+  flex-direction: column;
+  width: 32%;
+  margin: auto;
   margin-top: 1rem;
 }
+
+.free-gods h2{
+  margin-bottom: .5rem;
+}
+
+.free-gods-img{
+  border: .3rem ridge #ba8c59;
+  height: 100px;
+  width: 100px;
+  box-shadow: 11px 7px 17px 0px rgba(10, 10, 10, 0.308);
+}
+
+.free-gods-img:hover{
+  border: .3rem ridge #9e774a;
+  
+}
+
+.see-all-gods{
+  color: black;
+  margin: auto;
+  text-decoration: none;
+}
+
+.see-all-gods a{
+  color: black;
+}
+
+.see-all-gods a:hover{
+  color: rgb(49, 49, 49);
+}
+
+.server-container{
+  margin-top: .5rem;
+  border: .5rem ridge #ba8c59;
+  box-shadow: 11px 7px 17px 0px rgba(10, 10, 10, 0.308);
+}
+
+.circle-up{
+  background:green;
+  height: 8px;
+  width: 8px;
+  border-radius: 5px;
+}
+
+.circle-down{
+  background:red;
+  height: 8px;
+  width: 8px;
+  border-radius: 5px;
+}
+
+.text-up{
+  color: green;
+}
+
+.text-down{
+  color: red;
+}
+
+.server{
+  margin-left: 2rem;
+}
+
+.server-platform{
+  padding: .5rem;
+  display: flex;
+  text-align: center;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.server-platform  img{
+  height: 16px;
+  width: 16px;
+}
+
+.server-last-updated{
+  font-size: .7rem;
+}
+
+.newest-god{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  align-items: center;
+}
+
+.newest-god h2{
+  margin-bottom: .5rem;
+}
+
+.newest-god-container{
+  height: 175px;
+  width: 175px;
+  position: relative;
+}
+
+.new-god-img{
+  box-shadow: 11px 7px 17px 0px rgba(10, 10, 10, 0.308);
+  background: #2a374a;
+  width: 100%;
+  border: .5rem ridge #ba8c59;
+  
+}
+
+.new-god-img:hover{
+  border: .5rem ridge #9e774a;
+  
+}
+
+.new-god-name{
+  background: #2a374a;
+  position: absolute;
+  color: #ffcb34;
+  bottom: 8px;
+  right: 8px;
+  width: 91%;
+  border-top: .3rem ridge #ba8c59;
+}
+
+
 
 /*Nav bar */
 
@@ -80,6 +302,17 @@
   justify-content: center;
   align-items: center;
   margin-top: 20px;
+}
+
+
+
+.logo{
+  height: 100px;
+  width: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 10px;
 }
 
 
@@ -104,20 +337,63 @@
   text-decoration: none;
 }
 
+
+/* Footer */
+.footer-container{
+  margin-top: 5rem;
+  height: 100%;
+  width: 100%;
+}
+
+
+.footer{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 1rem;
+  background: #2a374a;
+  color: #ffcb34;
+  border-top: .5rem ridge #ba8c59;
+  height: auto;
+  
+  font-size: .7rem;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.footer a{
+  color: #ffcb34;
+  text-decoration: none;
+}
+
+.footer a:hover{
+  color: #d3aa2f;
+}
+
+.footer-img{
+  padding: 5px;
+  height: 50px;
+  width: 50px;
+}
+
 /*Search page */
 .search{
   background: rgba(77, 77, 77, 0.466);
   display: flex;
   flex-direction: column;
-  
+  padding-bottom: 60px;
   align-items: center;
   margin: auto;
   height: 100vh;
   width: 100vw;
+  position: relative;
 } 
 
+
 .search-bg{
-  height: 100vh;
+  height: 100%;
   width: 100vw;
   background-image: url('./img/background-search.jpg')
 }
@@ -126,7 +402,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 5rem;;
+  margin-top: 1rem;
 }
 
 .search-form input{
@@ -164,7 +440,7 @@
   margin-top: 1rem;
   background: white;
   border: .5rem ridge #ba8c59;
-  font-size: 2rem;
+  font-size: 1.8rem;
 
 }
 
@@ -173,7 +449,10 @@
   
   display: flex;
  color: black;
-  padding: 1rem;
+  padding-right: 1rem;
+  padding-left: 1rem;
+  padding-top: .5rem;
+  padding-bottom: .5rem;
 }
 
 .nameIcon:hover{
@@ -198,13 +477,13 @@
   background: url('./img/background-gods.jpg');
   
   height: 100vh;
-  width: 100vw;
+  width: 100%;
 }
 .god-background-loaded{
   background: url('./img/background-gods.jpg');
   height: 100%;
   width: 100%;
-  
+  position: relative;
 }
 
 
@@ -310,6 +589,7 @@
 }
 
 .class img{
+  box-shadow: none;
   border: 0;
   height:15px;
   width: 15px;
@@ -329,6 +609,7 @@
 }
 
 .pantheon img{
+  box-shadow: none;
   border: 0;
   height:15px;
   width: 15px;
@@ -344,16 +625,28 @@
 
 /* god info page */
 .godid-background{
-  background: #2a374a;
+  background: url('./img/background-godid.jpg');
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+}
+
+.godid-background-loaded{
+  background: url('./img/background-godid.jpg');
   height: 100%;
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  position: relative;
 }
 
-.godid{
+.godid-container{
   display: flex;
   justify-content: center;
   align-items: center;
@@ -363,6 +656,17 @@
   background: rgb(223, 222, 222);
   box-shadow: 11px 7px 17px 0px rgba(10, 10, 10, 0.473);
   border: .5rem ridge #ba8c59;
+}
+
+.godid{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  flex-direction: column;
+  margin-top: 1rem;
+  background: rgb(223, 222, 222);
+  
 }
 
 .god-lore{
@@ -412,7 +716,7 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-  width: 75vw;
+  width: 100%;
  border-bottom: .5rem ridge #ba8c59;
  
 }
@@ -465,11 +769,26 @@
   border-right: .5rem ridge #ba8c59; */
   border-bottom: .5rem ridge #ba8c59;
   text-align: center;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.abilitys.show p{
+  padding-top: 7px;
 }
 
 @keyframes fadein {
   from { opacity: 0; }
   to   { opacity: 1; }
+}
+
+.ability-name{
+  text-decoration: underline;
+}
+
+.godid-bottom{
+  margin-top: 2rem;
 }
 
 /* Example Build */
@@ -480,7 +799,7 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-  width: 75vw;
+  width: 100%;
  border-bottom: .5rem ridge #ba8c59;
 }
 
@@ -497,8 +816,30 @@
   box-shadow: inset 0px 10px 10px 0px rgba(44, 44, 44, 0.527);
   animation: fadein 1.5s;
   text-align: center;
+  border-bottom: .5rem ridge #ba8c59;
 }
 
+.rec-items{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 5px;
+}
+
+.rec-items > p:nth-child(2){
+  text-decoration: underline;
+  padding-bottom: 5px;
+}
+
+
+.rec-items img{
+  border: .3rem ridge #ba8c59;
+  height: 60px;
+  width: 60px;
+  margin-bottom: 3px;
+}
 
 /* Player Info page */
 .player-background{
@@ -511,6 +852,7 @@
   background: url(./img/background-player.jpg);
   height: 100%;
   width: 100%;
+  position: relative;
 }
 
 .player-container{
@@ -643,6 +985,7 @@ justify-content: space-between;
   border-radius: 10px;
   border: .5rem ridge #ba8c59;
   box-shadow: 11px 7px 17px 0px rgba(10, 10, 10, 0.473);
+  margin-bottom: 5px;
 }
 
 
@@ -657,4 +1000,630 @@ justify-content: space-between;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   text-align: center;
+}
+
+
+/* God stats table */
+.background-player-gods{
+  background: url('./img/background-player-gods.jpg');
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.background-player-gods-loaded{
+  background: url('./img/background-player-gods.jpg');
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-size: cover;
+  position: relative;
+}
+
+.ReactTable{
+  width: 75vw;
+  height: auto;
+  margin-top: 1rem;
+  background: #e7e7e7;
+  text-align: center;
+  box-shadow: 11px 7px 17px 0px rgba(10, 10, 10, 0.473);
+  border: .4rem ridge #ba8c59 !important;
+}
+
+.god-img-table{
+  
+  height: 3rem;
+  width: 3rem;
+  border: .3rem ridge #ba8c59;
+}
+
+
+/* Item page */
+.item-background{
+  background: url(./img/background-items.jpg);
+  height: 100vh;
+  width: 100%;
+}
+
+.item-background-loaded{
+  background: url(./img/background-items.jpg);
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+
+.items-loaded{
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  margin-left: auto;
+  margin-right: auto;
+  height: 100%;
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.single-item{
+  text-align: center;
+  padding-bottom: 5px;
+  color: rgb(0, 0, 0);
+  cursor: default;
+  position: relative;
+}
+
+.single-item .tooltip p{
+  padding-bottom: 5px;
+}
+
+.single-item .tooltip{
+  visibility: hidden;
+  width: 100%;
+  height: auto;
+  font-size: .8rem;
+  background-color: #2a374a;
+  color: #ffcb34;
+  text-align: center;
+  padding: 1rem;
+  border-radius: 6px;
+  border: .3rem ridge #ba8c59;
+  /* Position the tooltip text - see examples below! */
+  position: absolute;
+  z-index: 1;
+  top: -20px;
+  left: 50%; 
+}
+
+.single-item:hover .tooltip{
+  visibility: visible;
+}
+
+.single-item img{
+  border: .5rem ridge #ba8c59;
+  border-radius: 10px;
+  height: 128px;
+  width: 128px;
+}
+
+.single-item img:hover{
+  border: .5rem ridge #9e774a;
+  box-shadow: 9px 5px 17px 0px rgba(10, 10, 10, 0.308);
+}
+
+
+
+/*Media Querys */
+/*Moblie*/
+@media screen and (max-width: 420px) {
+  
+  /*Header */
+  .logo{
+    height: 50px;
+    width: 50px;
+    margin-right: 5px;
+    
+  }
+
+  .btn{
+    border: .2rem ridge #ba8c59;
+    font-size: 1rem;
+    padding: 5px;
+    margin-right: 5px;
+    margin-left: 0;
+  }
+
+  .website-title{
+    border: .2rem ridge #ba8c59;
+    padding: 3px;
+    font-size: .8rem;
+  }
+
+  /* Footer */
+
+  .footer{
+    border-top: .3rem ridge #ba8c59;
+    font-size: .6rem;
+  }
+
+  .footer a{
+    display: none;
+  }
+
+  /*Home Page */
+  .home{
+    width: 90vw;
+    border: .3rem ridge #ba8c59;
+  }
+
+  .home-inside{
+    width: 100%;
+    display: initial;
+    font-size: .8rem;
+  }
+
+  .home-info{
+    gap: 0;
+    grid-gap: 0;
+    width: 100%;
+    
+  }
+
+  .patch-notes{
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: .5rem;
+    grid-column: 1 / 3;
+
+  }
+
+  .patch-notes img{
+    border: .3rem ridge #ba8c59;
+  }
+
+  .patch-title{
+    bottom: 7px;
+    width: 97.5%;
+    right: 4px;
+  }
+
+  .esports{
+    margin-left: 5px;
+  }
+
+  .esports-img{
+    width: 150px;
+    height: 150px;
+    border: .3rem ridge #ba8c59;
+  }
+
+  .esports-container{
+    margin: auto;
+  }
+
+  .server{
+    grid-column: 1 / 3;
+    grid-row: 3 / 4;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: .5rem;
+    width: 300px;
+  }
+
+  .newest-god{
+    grid-row: 2 / 3;
+    grid-column: 2 /3;
+    margin-right: 5px;
+    margin-left: 0;
+  }
+
+  .new-god-name{
+    bottom: 4px;
+  width: 95%;
+  right: 4px;
+  }
+
+  .newest-god-container{
+    height: 150px;
+    width: 150px;
+  }
+
+  .new-god-img{
+    border: .3rem ridge #ba8c59;
+  }
+
+  .free-gods{
+    width: 100%;
+    text-align: center;
+  }
+
+  .class img{
+    display: none;
+  }
+
+  .pantheon img{
+    display: none;
+  }
+
+  /*Search page */
+  .search-form{
+    margin-top: 2rem;
+  }
+
+  .search-form form{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .search-form > form:nth-child(1) > input:nth-child(1) {
+    border-left: .3rem ridge  #ba8c59;
+    border-top: .3rem ridge  #ba8c59;
+    border-right: .3rem ridge  #ba8c59;
+    border-bottom: none;
+    font-size: 1rem;
+  }
+
+  .search-form > form:nth-child(1) > input:nth-child(2) {
+    border: .3rem ridge #ba8c59;
+    font-size: 1rem;
+  }
+
+  .search-form input {
+    padding: .8rem;
+  }
+
+  .search-result a{
+    border: .3rem ridge #ba8c59;
+    font-size: 1.2rem;
+  }
+
+  /*Player page*/
+  .player-container{
+    width: 90vw;
+    border: .3rem ridge #ba8c59;
+  }
+
+  .player{
+    flex-direction: column;
+  }
+
+  .player_info{
+    text-align: center;
+  }
+
+  .player_info_container h1{
+    margin-bottom: .5rem;
+  }
+
+  .player_info img{
+    border: .3rem ridge #ba8c59;
+  }
+
+  .rank-container h1{
+    margin-bottom: .5rem;
+  }
+
+  .ranked{
+    margin-bottom: .5rem;
+  }
+
+  .conquest img{
+    height: 100px;
+    width: 100px;
+  }
+
+  .Joust img{
+    height: 100px;
+    width: 100px;
+  }
+
+  .Duel img{
+    height: 100px;
+    width: 100px;
+  }
+
+  .top-god-container{
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    margin-bottom: .5rem;
+    gap: 0;
+    grid-gap: 0;
+  }
+
+  .top-god{
+    margin-bottom: .5rem;
+  }
+
+  .top-god img{
+    border: .3rem ridge #ba8c59;
+  }
+
+  .top-god-container a{
+    grid-column: auto;
+    height: 45px;
+    align-self: end;
+  }
+
+  .achievements{
+   grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  /* Player Gods */
+  .ReactTable{
+    width: 90vw;
+    font-size: .8rem;
+  }
+
+
+
+  /*gods*/
+
+  .gods{
+    width: 90vw;
+    border-left: .3rem ridge #ba8c59;
+    border-right: .3rem ridge #ba8c59;
+    border-bottom: .3rem ridge #ba8c59;
+  }
+
+  .god-title{
+    width: 90vw;
+    border-left: .3rem ridge #ba8c59;
+    border-right: .3rem ridge #ba8c59;
+    border-top: .3rem ridge #ba8c59;
+  }
+
+  .god-sort ul{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .god-sort > ul:nth-child(1) > li:nth-child(1) {
+    grid-column: 1 / 4;
+  }
+
+  .god-sort img{
+    display: none;
+  }
+
+  .gods-loaded{
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .single-god img{
+    border: .3rem ridge #ba8c59;
+    height: 80px;
+    width: 80px;
+  }
+
+  .single-god p{
+    font-size: .7rem;
+  }
+
+  .single-god h5{
+    font-size: .5rem;
+  }
+
+  /*god-id page */
+  .godid-container{
+    width: 90vw;
+    border: .3rem ridge #ba8c59;
+  }
+
+  .god-lore{
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .god-profile{
+    width: 75%;
+  }
+
+  .god-profile-img{
+    border: .3rem ridge #ba8c59;
+  }
+
+  .lore{
+    padding-right: 0;
+  }
+
+  .lore h1{
+    text-decoration: underline;
+  }
+
+  .abilitys-menu{
+    width: 88vw;
+    border-bottom: .3rem ridge #ba8c59;
+  }
+
+  .abilitys.show{
+    grid-template-columns:1fr;
+    width: 100%;
+    font-size: .6rem;
+  }
+
+  .abilitys.show div{
+    height: auto;
+    padding-bottom: 2px;
+    border-bottom: 2px solid #ba8c59;
+  }
+
+  .abilitys > div:nth-child(5){
+    border-bottom: none;
+  }
+
+  .build-menu{
+    width: 88vw;
+    border-bottom: .3rem ridge #ba8c59;
+  }
+
+  .build.show{
+    grid-template-columns: 1fr 1fr;
+  }
+
+  /*Items */
+
+  .items-loaded{
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .single-item{
+    font-size: .8rem;
+  }
+
+  .single-item img{
+    border: .3rem ridge #ba8c59;
+    border-radius: 10px;
+    height: 80px;
+    width: 80px;
+  }
+
+  .single-item img:hover{
+    border: .3rem ridge #9e774a;
+  }
+
+  .single-item .tooltip{
+    font-size: .5rem;
+    padding: .5rem;
+    left: 15%;
+    top: 50px;
+  }
+}
+
+/*Moblie*/
+@media screen and (min-width: 650px) and (max-width: 800px) {
+  /*Header Menu */
+  .btn{
+    border: .3rem ridge #ba8c59;
+  }
+
+  /*Footer*/
+  .footer{
+    font-size: .5rem;
+  }
+
+  /*home Page */
+  .home{
+    width: 80vw;
+  }
+
+  .home-inside{
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .home-info{
+    width: 100%;
+  }
+
+  .free-gods{
+    width: 100%;
+    text-align: center;
+  }
+
+  .free-gods-container{
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  /*Player stats*/
+  .player-container{
+    width: 80vw;
+  }
+
+  .player{
+    flex-direction: column;
+  }
+
+  .player_info{
+    text-align: center;
+  }
+
+  .player_info_container h1{
+    margin-bottom: .7rem;
+  }
+
+  .rank-container h1{
+    margin-bottom: .7rem;
+  }
+
+  /*PLayer gods stats */
+  .ReactTable{
+    width: 80vw;
+  }
+
+  /*Gods */
+  .god-title{
+    width: 80vw;
+  }
+
+  .god-sort ul{
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+    gap: 5px;
+  }
+
+  .gods{
+    width: 80vw;
+  }
+
+  .single-god img{
+    height: 100px;
+    width: 100px;
+  }
+
+  .class img{
+    height: 15px;
+    width: 15px;
+  }
+
+  .pantheon img{
+    height: 15px;
+    width: 15px;
+  }
+
+  /*God id */
+  .godid-container{
+    width: 80vw;
+  }
+
+  .lore{
+    font-size: .6rem;
+  }
+
+  .abilitys-menu{
+    width: 100%;
+  }
+
+  .abilitys.show{
+    font-size: .6rem;
+  }
+
+  .build-menu{
+    width: 100%;
+  }
+
+  /*items*/
+  .single-item{
+    font-size: .8rem;
+  }
+
+  .single-item img{
+    height: 100px;
+    width: 100px;
+  }
+
+  .single-item .tooltip{
+    font-size: .7rem;
+    padding: .5rem;
+    top: -70px;
+  }
+}
+
+/*Big screecs*/
+@media screen and (min-width: 1440px){
+  .footer-container{
+    margin-top: 10rem;
+  }
 }
