@@ -119,7 +119,6 @@ width: 100%;
 }
 
 .patch-notes img:hover{
-  opacity: 90%;
   border: .5rem ridge #9e774a;
 }
 
