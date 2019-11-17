@@ -10,7 +10,7 @@ export default class Header extends Component {
                         <img src={require("../../img/smite-training.png")} alt="s"></img>
                     </div>
                     <div className="btn">
-                        <Link to="/">Home</Link></div>
+                        <Link to='/smite_react/'>Home</Link></div>
                     <div className="btn">
                         <Link to="/seach">Players</Link></div>
                     <div className="btn">

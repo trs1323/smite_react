@@ -315,6 +315,11 @@ width: 100%;
   margin-right: 10px;
 }
 
+.logo img{
+  height: 100px;
+  width: 100px;
+}
+
 
 
 .btn{
@@ -1124,6 +1129,11 @@ justify-content: space-between;
     width: 50px;
     margin-right: 5px;
     
+  }
+
+  .logo img{
+    height: 50px;
+    width: 50px;
   }
 
   .btn{

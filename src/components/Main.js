@@ -78,7 +78,7 @@ export default class Main extends Component {
             <Router>
                 <div className='main'>
                     <Switch>
-                        <Route exact path="/">
+                        <Route exact path={process.env.PUBLIC_URL + '/'}>
                             {this.state && this.state.session &&
                                 <Home
                                     dt={dt}
