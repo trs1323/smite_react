@@ -42,6 +42,7 @@ export default class Home extends Component {
             Axios.get(`https://cors-anywhere.herokuapp.com/http://api.smitegame.com/smiteapi.svc/${this.state.api}json/${this.props.devid}/${signature}/${this.props.session}/${this.props.timestamp}/1`, config)
                 .then(res => {
                     this.setState({
+                        AllGods: res.data,
                         LatestGod: res.data.filter((newGod) => {
                             return newGod.latestGod === 'y'
                         }),
@@ -50,7 +51,9 @@ export default class Home extends Component {
                         }),
                         loaded: true
                     })
+                    this.props.setGods(this.state.AllGods)
                 })
+
                 .catch(err => {
                     alert('404 Please try again')
                     console.log(err)
@@ -63,12 +66,14 @@ export default class Home extends Component {
                 })
             })
             .catch(err => {
-                alert('404 Please try again')
                 console.log(err)
             })
+
+
     }
 
     isLoaded() {
+
         return ((this.state.loaded === false) ? 'header' : 'header-loaded')
     }
 
@@ -94,12 +99,13 @@ export default class Home extends Component {
                         <LoadingIndicator />
                         {this.state && this.state.LatestGod && this.state.serverStatus &&
                             <div className='home-inside'>
+
                                 <div className="home-info">
                                     <div className="patch-notes">
                                         <h2>Lastest Patch</h2>
-                                        <a href="https://www.smitegame.com/news/rwby-update-notes" target="_blank" rel="noopener noreferrer">
-                                            <img src={require('../img/patch/new-patch.jpg')} alt='' />
-                                            <h3 className="patch-title">6.11 RWBY Update Notes</h3>
+                                        <a href="https://www.smitegame.com/news/the-vigilant-update-notes/" target="_blank" rel="noopener noreferrer">
+                                            <img src={require('../img/patch/new-patch.png')} alt='' />
+                                            <h3 className="patch-title">6.12  Update Notes</h3>
                                         </a>
                                     </div>
                                     <div className="esports">
@@ -143,7 +149,7 @@ export default class Home extends Component {
                                                 <div key={uuid.v4()} className="free-god" onClick={this.setGodId}>
                                                     <img key={uuid.v4()} className="free-gods-img" src={god.godIcon_URL} alt="" id={god.id} />
                                                     <p key={uuid.v4()} className="free-god-name" >{god.Name}</p>
-                                                    <h5 key={uuid.v4()} ><i>{god.Title}</i></h5>
+                                                    <h6 key={uuid.v4()} ><i>{god.Title}</i></h6>
                                                     <div className="class">
                                                         <h6 key={uuid.v4()}>{god.Roles}</h6>
                                                         <img key={uuid.v4()} src={require(`../img/class/${god.Roles.replace(/\s/g, '')}.png`)} alt=""></img></div>

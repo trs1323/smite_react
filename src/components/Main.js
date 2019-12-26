@@ -10,6 +10,8 @@ import GodId from './GodId';
 import PlayerGods from './PlayerGods';
 import Home from './Home'
 import Items from './Items'
+import PlayerHistory from './PlayerHistory';
+import PlayerRank from './PlayerRank';
 
 
 export default class Main extends Component {
@@ -24,6 +26,8 @@ export default class Main extends Component {
         }
         this.childstate = this.childstate.bind(this)
         this.setGodState = this.setGodState.bind(this)
+        this.setGods = this.setGods.bind(this)
+        this.setPlayerInfo = this.setPlayerInfo.bind(this)
     }
 
     componentDidMount() {
@@ -50,14 +54,25 @@ export default class Main extends Component {
             })
     }
 
+    //grabs gods list for all pages
+    setGods(Gods) {
+        this.setState({ gods: Gods })
+    }
+
 
     //grabs player id from search bar
     childstate(player) {
         this.setState({ player_id: player })
     }
 
+    //set god id for clicking gods on the home page
     setGodState(god) {
         this.setState({ god_id: god })
+    }
+
+    //sets the player data and passes it
+    setPlayerInfo(player) {
+        this.setState({ player_info: player })
     }
 
 
@@ -87,6 +102,7 @@ export default class Main extends Component {
                                     authkey={authkey}
                                     session={session}
                                     god_id={this.setGodState}
+                                    setGods={this.setGods}
                                 />}
                         </Route>
                         <Route path="/seach">
@@ -107,16 +123,21 @@ export default class Main extends Component {
                                     devid={devid}
                                     authkey={authkey}
                                     session={session}
-                                    player_id={this.state.player_id} />}
+                                    player_id={this.state.player_id}
+                                    playerInfo={this.setPlayerInfo}
+                                    player_info={this.state.player_info}
+                                />}
                         </Route>
                         <Route path="/gods">
                             {this.state && this.state.session &&
                                 <Gods
+
                                     timestamp={timestamp}
                                     devid={devid}
                                     authkey={authkey}
                                     session={session}
-                                    god_id={this.setGodState} />}
+                                    god_id={this.setGodState}
+                                    gods={this.state.gods} />}
                         </Route>
                         <Route path="/god_id">
                             {this.state && this.state.session &&
@@ -125,7 +146,8 @@ export default class Main extends Component {
                                     devid={devid}
                                     authkey={authkey}
                                     session={session}
-                                    god_id={this.state.god_id} />}
+                                    god_id={this.state.god_id}
+                                    gods={this.state.gods} />}
                         </Route>
                         <Route path="/player_gods">
                             {this.state && this.state.session &&
@@ -135,6 +157,7 @@ export default class Main extends Component {
                                     authkey={authkey}
                                     session={session}
                                     player_id={this.state.player_id}
+                                    player_info={this.state.player_info}
                                 />}
                         </Route>
                         <Route path="/items">
@@ -144,6 +167,30 @@ export default class Main extends Component {
                                     devid={devid}
                                     authkey={authkey}
                                     session={session}
+                                />}
+                        </Route>
+                        <Route path="/player_history">
+                            {this.state && this.state.session &&
+                                <PlayerHistory
+                                    timestamp={timestamp}
+                                    devid={devid}
+                                    authkey={authkey}
+                                    session={session}
+                                    player_id={this.state.player_id}
+                                    change={this.childstate}
+                                    player_info={this.state.player_info}
+                                />}
+                        </Route>
+                        <Route path="/player_rank_history">
+                            {this.state && this.state.session &&
+                                <PlayerRank
+                                    timestamp={timestamp}
+                                    devid={devid}
+                                    authkey={authkey}
+                                    session={session}
+                                    player_id={this.state.player_id}
+                                    change={this.childstate}
+                                    player_info={this.state.player_info}
                                 />}
                         </Route>
                     </Switch>

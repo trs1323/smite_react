@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import Axios from 'axios';
-import md5 from 'md5';
+
 import { Link } from "react-router-dom";
 import uuid from 'uuid'
-import { trackPromise } from 'react-promise-tracker'
+
 import { usePromiseTracker } from "react-promise-tracker";
 import Loader from 'react-loader-spinner';
 import Header from './layout/Header'
@@ -23,13 +22,13 @@ const LoadingIndicator = props => {
 export default class Gods extends Component {
     constructor(props) {
         super(props);
-        this.state = { api: 'getgods', lang: '1', active: '', loaded: 'false' }
+        this.state = { api: 'getgods', lang: '1', active: '', loaded: true, data: this.props.gods, base: this.props.gods }
         this.onclick = this.onclick.bind(this)
         this.setGodId = this.setGodId.bind(this)
     }
 
     isLoaded() {
-        return ((this.state.loaded === 'false') ? 'god-background' : 'god-background-loaded')
+        return ((this.state.loaded === false) ? 'god-background' : 'god-background-loaded')
     }
 
     //highlight the filter
@@ -59,23 +58,23 @@ export default class Gods extends Component {
         }
     }
 
-    componentDidMount() {
-        let config = {
-            headers: {
-                'Access-Control-Allow-Origin': '*',
-            }
-        }
-        const signature = md5(`${this.props.devid}${this.state.api}${this.props.authkey}${this.props.timestamp}`);
-        trackPromise(
-            Axios.get(`https://cors-anywhere.herokuapp.com/http://api.smitegame.com/smiteapi.svc/${this.state.api}json/${this.props.devid}/${signature}/${this.props.session}/${this.props.timestamp}/${this.state.lang}`, config)
-                .then(res => {
-                    this.setState({ data: res.data, base: res.data, loaded: 'true' })
-                })
-                .catch(err => {
-                    alert('404 Please try again')
-                    console.log(err)
-                }))
-    }
+    // componentDidMount() {
+    //     let config = {
+    //         headers: {
+    //             'Access-Control-Allow-Origin': '*',
+    //         }
+    //     }
+    //     const signature = md5(`${this.props.devid}${this.state.api}${this.props.authkey}${this.props.timestamp}`);
+    //     trackPromise(
+    //         Axios.get(`https://cors-anywhere.herokuapp.com/http://api.smitegame.com/smiteapi.svc/${this.state.api}json/${this.props.devid}/${signature}/${this.props.session}/${this.props.timestamp}/${this.state.lang}`, config)
+    //             .then(res => {
+    //                 this.setState({ data: res.data, base: res.data, loaded: 'true' })
+    //             })
+    //             .catch(err => {
+    //                 alert('404 Please try again')
+    //                 console.log(err)
+    //             }))
+    // }
 
     render() {
         return (
@@ -109,7 +108,7 @@ export default class Gods extends Component {
                                     <div key={uuid.v4()} className="single-god" onClick={this.setGodId}>
                                         <img key={uuid.v4()} src={god.godIcon_URL} alt="" id={god.id} />
                                         <p key={uuid.v4()}  >{god.Name}</p>
-                                        <h5 key={uuid.v4()} ><i>{god.Title}</i></h5>
+                                        <h6 key={uuid.v4()} ><i>{god.Title}</i></h6>
                                         <div className="class">
                                             <h6 key={uuid.v4()}>{god.Roles}</h6>
                                             <img key={uuid.v4()} src={require(`../img/class/${god.Roles.replace(/\s/g, '')}.png`)} alt=""></img></div>

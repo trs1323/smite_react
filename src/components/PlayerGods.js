@@ -35,6 +35,7 @@ const LoadingIndicator = props => {
 const columns = [
     {
         id: 'godimg',
+        Header: 'Sort:',
         accessor: d => { return <img className='god-img-table' src={`https://web2.hirez.com/smite/god-icons/${d.god.toString().toLowerCase().replace(/'/g, '').replace(/\s/g, '-')}.jpg`} alt="" /> },
         width: 60
 
@@ -86,7 +87,7 @@ const columns = [
 export default class PlayerGods extends Component {
     constructor(props) {
         super(props)
-        this.state = { api: 'getplayer', api2: 'getgodranks', api5: 'getqueuestats', loaded: false }
+        this.state = { api: 'getplayer', api2: 'getgodranks', api5: 'getqueuestats', loaded: false, res: this.props.player_info }
     }
 
     componentDidMount() {
@@ -95,19 +96,19 @@ export default class PlayerGods extends Component {
                 'Access-Control-Allow-Origin': '*',
             }
         }
-        const signature = md5(`${this.props.devid}${this.state.api}${this.props.authkey}${this.props.timestamp}`)
-        trackPromise(
-            Axios.get(`https://cors-anywhere.herokuapp.com/http://api.smitegame.com/smiteapi.svc/${this.state.api}json/${this.props.devid}/${signature}/${this.props.session}/${this.props.timestamp}/${this.props.player_id}`, config)
-                .then(res => {
-                    this.setState({
-                        res: res.data[0]
-                    })
-                })
-                .catch(err => {
-                    alert('404 Please try again')
-                    console.log(err)
-                })
-        )
+        // const signature = md5(`${this.props.devid}${this.state.api}${this.props.authkey}${this.props.timestamp}`)
+        // trackPromise(
+        //     Axios.get(`https://cors-anywhere.herokuapp.com/http://api.smitegame.com/smiteapi.svc/${this.state.api}json/${this.props.devid}/${signature}/${this.props.session}/${this.props.timestamp}/${this.props.player_id}`, config)
+        //         .then(res => {
+        //             this.setState({
+        //                 res: res.data[0]
+        //             })
+        //         })
+        //         .catch(err => {
+        //             alert('404 Please try again')
+        //             console.log(err)
+        //         })
+        // )
 
         const signature2 = md5(`${this.props.devid}${this.state.api2}${this.props.authkey}${this.props.timestamp}`)
         trackPromise(
@@ -119,7 +120,6 @@ export default class PlayerGods extends Component {
                     })
                 })
                 .catch(err => {
-                    alert('404 Please try again')
                     console.log(err)
                 })
         )
@@ -134,7 +134,6 @@ export default class PlayerGods extends Component {
                     })
                 })
                 .catch(err => {
-                    alert(err)
                     console.log(err)
                 })
         )
@@ -147,7 +146,6 @@ export default class PlayerGods extends Component {
                 })
             })
             .catch(err => {
-                alert(err)
                 console.log(err)
             })
 
@@ -160,7 +158,6 @@ export default class PlayerGods extends Component {
                 })
             })
             .catch(err => {
-                alert(err)
                 console.log(err)
             })
 
@@ -173,7 +170,6 @@ export default class PlayerGods extends Component {
                 })
             })
             .catch(err => {
-                alert(err)
                 console.log(err)
             })
 
@@ -186,7 +182,6 @@ export default class PlayerGods extends Component {
                 })
             })
             .catch(err => {
-                alert(err)
                 console.log(err)
             })
 
@@ -199,7 +194,6 @@ export default class PlayerGods extends Component {
                 })
             })
             .catch(err => {
-                alert(err)
                 console.log(err)
             })
     }

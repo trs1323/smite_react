@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "572e14d85162485cd7c09f3aaa2d866d",
+    "revision": "7c1247bdbe3c6c5e9fadd366167b30bd",
     "url": "/smite_react/index.html"
   },
   {
@@ -8,16 +8,16 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/smite_react/static/css/2.2551bc91.chunk.css"
   },
   {
-    "revision": "733ad3dd410b3493c332",
-    "url": "/smite_react/static/css/main.916688ee.chunk.css"
+    "revision": "96186c013d62f31b8516",
+    "url": "/smite_react/static/css/main.eb22969f.chunk.css"
   },
   {
     "revision": "3aac462d5e64c849446d",
     "url": "/smite_react/static/js/2.05d85b71.chunk.js"
   },
   {
-    "revision": "733ad3dd410b3493c332",
-    "url": "/smite_react/static/js/main.d8e537c6.chunk.js"
+    "revision": "96186c013d62f31b8516",
+    "url": "/smite_react/static/js/main.30c3195a.chunk.js"
   },
   {
     "revision": "45f646061ce60b3e44ca",

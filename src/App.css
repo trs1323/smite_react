@@ -1,8 +1,9 @@
-@import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 @font-face {
   font-family: Penumbra;
   src: url("./font/PenumbraSerifStd-Regular.otf") format("opentype");
 }
+
 
 /*
   gold text = #ffcb34
@@ -160,6 +161,7 @@ width: 100%;
 
 .free-god{
   color: black;
+  margin-bottom: .5rem;
 }
 
 .free-gods{
@@ -345,7 +347,7 @@ width: 100%;
 /* Footer */
 .footer-container{
   margin-top: 5rem;
-  height: 100%;
+
   width: 100%;
 }
 
@@ -702,10 +704,19 @@ width: 100%;
   font-size: .8rem;
   text-align: center;
   padding-right: 1rem;
+  
 }
 
 .lore h1{
   padding-bottom: 1rem;
+  text-decoration: underline;
+}
+
+.lore p{
+  line-height: 1.5;
+  font-family: 'Roboto', sans-serif !important;
+  font-size: 14px;
+  text-align: left;
 }
 
 .hide{
@@ -776,6 +787,7 @@ width: 100%;
   padding-bottom: 5px;
   padding-left: 5px;
   padding-right: 5px;
+  line-height: 1.5;
 }
 
 .abilitys.show p{
@@ -789,6 +801,7 @@ width: 100%;
 
 .ability-name{
   text-decoration: underline;
+  font-size: .8rem;
 }
 
 .godid-bottom{
@@ -914,8 +927,34 @@ justify-content: space-between;
   border-bottom: .5rem ridge #ba8c59;
 }
 
+.match-history > div:nth-child(2){
+  width: 95%;
+  height: 100%;
+}
+
 .match-history > div:nth-child(2) > svg:nth-child(1){
   overflow: inherit;
+}
+
+.match-history div svg text{
+  font-weight: 900 !important;
+  font-size: 3.2px !important;
+}
+
+.match-history-link{
+  text-align: right;
+  margin-bottom: 1rem;
+}
+
+.match-history-link a{
+  color: #ffcb34;
+  background: #2a374a;
+  border: .3rem ridge #ba8c59;
+  padding: .3rem;
+}
+
+.match-history-link a:hover{
+  background: #34435a;
 }
 
 .rank-container{
@@ -948,6 +987,23 @@ justify-content: space-between;
   text-decoration: underline;
 }
 
+.rank-history-link{
+  text-align: right;
+  margin-bottom: 1rem;
+  margin-right: .5rem;
+}
+
+.rank-history-link a{
+  color: #ffcb34;
+  background: #2a374a;
+  border: .3rem ridge #ba8c59;
+  padding: .3rem;
+}
+
+.rank-history-link a:hover{
+  background: #34435a;
+}
+
 .top-gods-title{
   text-align: center;
   margin-bottom: .8rem;
@@ -969,7 +1025,7 @@ justify-content: space-between;
   text-align: center;
   text-decoration: none;
   background: #2a374a;
-  border: .5rem ridge #ba8c59;
+  border: .3rem ridge #ba8c59;
   padding: 5px;
   font-weight: 900;
   
@@ -1045,6 +1101,334 @@ justify-content: space-between;
   border: .3rem ridge #ba8c59;
 }
 
+/* Player History */
+.recent_history{
+justify-content: center;
+display: flex;
+flex-direction: column;
+align-items: center;
+width: 75vw;
+margin: auto;
+border: .4rem ridge #ba8c59;
+background: #e7e7e7;
+}
+
+.title{
+  display: flex;
+}
+
+.title a{
+  color: black;
+  margin-right: 1rem;
+  align-items: center;
+}
+.title a:hover{
+  color: rgb(26, 26, 26);
+}
+
+.match{
+  background: #e7e7e7;
+  width: 74vw;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: .5rem;
+}
+
+.ownPlayer{
+  margin-right: 1rem;
+}
+
+.ownPlayer p{
+  line-height: 1.500em;
+
+letter-spacing: 0.036em;
+}
+
+.ownPlayer img{
+  border: .3rem ridge #ba8c59;
+  height: 100px;
+  width: 100px;
+}
+
+.items img{
+  height: 50px;
+  width: 50px;
+  border: .2rem ridge #ba8c59;
+  margin-left: 2px;
+  margin-right: 2px;
+}
+ 
+.player-items{
+  
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+}
+  
+.player-items img{
+  height: 25px;
+  width: 25px;
+  margin-left: 2px;
+  margin-right: 2px;
+  border: .1rem ridge #ba8c59;
+}
+
+.history-god-img{
+  margin: 5px;
+  height: 35px;
+  width: 35px;
+}
+
+.players{
+  display: flex;
+  flex-direction: column;
+} 
+
+.players-img{
+  display: flex;
+  
+}
+
+.players-img a{
+  color: black;
+}
+
+.players-img a:hover{
+  color: rgb(26, 26, 26);
+}
+
+.players-img img{
+  border: .2rem ridge #ba8c59;
+}
+
+.players p{
+  margin: 5px;
+}
+
+.no-ranked{
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+
+
+
+.conquest-container{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  font-size: .8rem;
+}
+
+.conquest-container div.players:nth-child(1){
+  grid-column: 1/2;
+  grid-row: 1;
+  background: rgba(39, 110, 39, 0.575);
+  border-top: .3rem solid rgb(19, 99, 19);
+  border-left: .3rem solid rgb(19, 99, 19);
+}
+.conquest-container div.players:nth-child(2){
+  grid-column: 1/2;
+  grid-row: 2;
+  background: rgba(39, 110, 39, 0.575);
+  border-left: .3rem solid rgb(19, 99, 19);
+}
+.conquest-container div.players:nth-child(3){
+  grid-column: 1/2;
+  grid-row: 3;
+  background: rgba(39, 110, 39, 0.575);
+  border-left: .3rem solid rgb(19, 99, 19);
+}
+.conquest-container div.players:nth-child(4){
+  grid-column: 1/2;
+  grid-row: 4;
+  background: rgba(39, 110, 39, 0.575);
+  border-left: .3rem solid rgb(19, 99, 19);
+}
+.conquest-container div.players:nth-child(5){
+  grid-column: 1/2;
+  grid-row: 5;
+  background: rgba(39, 110, 39, 0.575);
+  border-left: .3rem solid rgb(19, 99, 19);
+  border-bottom: .3rem solid rgb(19, 99, 19);
+}
+
+
+.conquest-container div.players:nth-child(6){
+  grid-column: 2/3;
+  grid-row: 1;
+  background: rgba(134, 37, 37, 0.582);
+  border-top: .3rem solid rgb(179, 31, 31);
+  border-right: .3rem solid rgb(179, 31, 31);
+}
+.conquest-container div.players:nth-child(7){
+  grid-column: 2/3;
+  grid-row: 2;
+  background: rgba(134, 37, 37, 0.582);
+  border-right: .3rem solid rgb(179, 31, 31);
+}
+.conquest-container div.players:nth-child(8){
+  grid-column: 2/3;
+  grid-row: 3;
+  background: rgba(134, 37, 37, 0.582);
+  border-right: .3rem solid rgb(179, 31, 31);
+}
+.conquest-container div.players:nth-child(9){
+  grid-column: 2/3;
+  grid-row: 4;
+  background: rgba(134, 37, 37, 0.582);
+  border-right: .3rem solid rgb(179, 31, 31);
+}
+.conquest-container div.players:nth-child(10){
+  grid-column: 2/3;
+  grid-row: 5;
+  background: rgba(134, 37, 37, 0.582);
+  border-bottom: .3rem solid rgb(179, 31, 31);
+  border-right: .3rem solid rgb(179, 31, 31);
+}
+
+.siege-container{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  font-size: .8rem;
+  height: max-content;
+}
+
+.siege-container div.players:nth-child(1){
+  grid-column: 1/2;
+  grid-row: 1;
+  background: rgba(39, 110, 39, 0.575);
+  border-top: .3rem solid rgb(19, 99, 19);
+  border-left: .3rem solid rgb(19, 99, 19);
+}
+.siege-container div.players:nth-child(2){
+  grid-column: 1/2;
+  grid-row: 2;
+  background: rgba(39, 110, 39, 0.575);
+  border-left: .3rem solid rgb(19, 99, 19);
+}
+.siege-container div.players:nth-child(3){
+  grid-column: 1/2;
+  grid-row: 3;
+  background: rgba(39, 110, 39, 0.575);
+  border-left: .3rem solid rgb(19, 99, 19);
+}
+.siege-container div.players:nth-child(4){
+  grid-column: 1/2;
+  grid-row: 4;
+  background: rgba(39, 110, 39, 0.575);
+  border-bottom: .3rem solid rgb(19, 99, 19);
+  border-left: .3rem solid rgb(19, 99, 19);
+}
+
+
+
+.siege-container div.players:nth-child(5){
+  grid-column: 2/3;
+  grid-row: 1;
+  background: rgba(134, 37, 37, 0.582);
+  border-top: .3rem solid rgb(179, 31, 31);
+  border-right: .3rem solid rgb(179, 31, 31);
+}
+.siege-container div.players:nth-child(6){
+  grid-column: 2/3;
+  grid-row: 2;
+  background: rgba(134, 37, 37, 0.582);
+  border-right: .3rem solid rgb(179, 31, 31);
+}
+.siege-container div.players:nth-child(7){
+  grid-column: 2/3;
+  grid-row: 3;
+  background: rgba(134, 37, 37, 0.582);
+  border-right: .3rem solid rgb(179, 31, 31);
+}
+.siege-container div.players:nth-child(8){
+  grid-column: 2/3;
+  grid-row: 4;
+  background: rgba(134, 37, 37, 0.582);
+  border-bottom: .3rem solid rgb(179, 31, 31);
+  border-right: .3rem solid rgb(179, 31, 31);
+}
+
+
+.joust-container{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  font-size: .8rem;
+  height: max-content;
+}
+
+.joust-container div.players:nth-child(1){
+  grid-column: 1/2;
+  grid-row: 1;
+  background: rgba(39, 110, 39, 0.575);
+  border-top: .3rem solid rgb(19, 99, 19);
+  border-left: .3rem solid rgb(19, 99, 19);
+}
+.joust-container div.players:nth-child(2){
+  grid-column: 1/2;
+  grid-row: 2;
+  background: rgba(39, 110, 39, 0.575);
+  border-left: .3rem solid rgb(19, 99, 19);
+}
+.joust-container div.players:nth-child(3){
+  grid-column: 1/2;
+  grid-row: 3;
+  background: rgba(39, 110, 39, 0.575);
+  border-bottom: .3rem solid rgb(19, 99, 19);
+  border-left: .3rem solid rgb(19, 99, 19);
+}
+
+
+
+
+.joust-container div.players:nth-child(4){
+  grid-column: 2/3;
+  grid-row: 1;
+  background: rgba(134, 37, 37, 0.582);
+  border-top: .3rem solid rgb(179, 31, 31);
+  border-right: .3rem solid rgb(179, 31, 31);
+}
+.joust-container div.players:nth-child(5){
+  grid-column: 2/3;
+  grid-row: 2;
+  background: rgba(134, 37, 37, 0.582);
+  border-right: .3rem solid rgb(179, 31, 31);
+}
+.joust-container div.players:nth-child(6){
+  grid-column: 2/3;
+  grid-row: 3;
+  background: rgba(134, 37, 37, 0.582);
+  border-bottom: .3rem solid rgb(179, 31, 31);
+  border-right: .3rem solid rgb(179, 31, 31);
+}
+
+
+
+.duel-container{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  font-size: .8rem;
+  height: max-content;
+}
+
+.duel-container div.players:nth-child(1){
+  grid-column: 1/2;
+  grid-row: 1;
+  background: rgba(39, 110, 39, 0.575);
+  border-top: .3rem solid rgb(19, 99, 19);
+  border-bottom: .3rem solid rgb(19, 99, 19);
+  border-left: .3rem solid rgb(19, 99, 19);
+}
+
+.duel-container div.players:nth-child(2){
+  grid-column: 2/3;
+  grid-row: 1;
+  background: rgba(134, 37, 37, 0.582);
+  border-top: .3rem solid rgb(179, 31, 31);
+  border-bottom: .3rem solid rgb(179, 31, 31);
+  border-right: .3rem solid rgb(179, 31, 31);
+}
+
 
 /* Item page */
 .item-background{
@@ -1118,9 +1502,11 @@ justify-content: space-between;
 
 
 
-/*Media Querys */
-/*Moblie*/
-@media screen and (max-width: 420px) {
+/*Media Querys *//*Media Querys *//*Media Querys *//*Media Querys *//*Media Querys *//*Media Querys *//*Media Querys */
+
+
+/*Moblie*//*Moblie*//*Moblie*//*Moblie*//*Moblie*//*Moblie*/
+@media screen and (max-width: 700px) {
   
   /*Header */
   .logo{
@@ -1191,6 +1577,10 @@ justify-content: space-between;
     border: .3rem ridge #ba8c59;
   }
 
+  .patch-notes img:hover{
+    border: .3rem ridge #9e774a;
+  }
+
   .patch-title{
     bottom: 7px;
     width: 97.5%;
@@ -1207,6 +1597,10 @@ justify-content: space-between;
     border: .3rem ridge #ba8c59;
   }
 
+  .esports-img:hover{
+    border: .3rem ridge #9e774a;
+  }
+
   .esports-container{
     margin: auto;
   }
@@ -1218,6 +1612,10 @@ justify-content: space-between;
     margin-right: auto;
     margin-top: .5rem;
     width: 300px;
+  }
+
+  .server-container{
+    border: .3rem ridge #ba8c59;
   }
 
   .newest-god{
@@ -1240,6 +1638,10 @@ justify-content: space-between;
 
   .new-god-img{
     border: .3rem ridge #ba8c59;
+  }
+
+  .new-god-img:hover{
+    border: .3rem ridge #9e774a;
   }
 
   .free-gods{
@@ -1364,8 +1766,6 @@ justify-content: space-between;
     font-size: .8rem;
   }
 
-
-
   /*gods*/
 
   .gods{
@@ -1405,6 +1805,10 @@ justify-content: space-between;
     width: 80px;
   }
 
+  .single-god img:hover{
+    border: .3rem ridge #9e774a;
+  }
+
   .single-god p{
     font-size: .7rem;
   }
@@ -1434,6 +1838,7 @@ justify-content: space-between;
   }
 
   .lore{
+    
     padding-right: 0;
   }
 
@@ -1498,10 +1903,227 @@ justify-content: space-between;
     left: 15%;
     top: 50px;
   }
+
+  /*Player History*/
+  .recent_history{
+    width: 85vw;
+  }
+  
+  .match{
+    font-size: .8rem;
+    width:82vw ;
+    grid-template-columns: 1fr;
+    padding: 0;
+    
+  }
+
+  .title{
+    margin: .5rem;
+  }
+
+  .ownPlayer{
+    width: 100%;
+    text-align: center;
+    max-width: max-content;
+    margin-top: 0;
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: .5rem;
+  }
+
+  .items{
+    gap: 2px;
+    width: 84vw;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 55px 55px 55px 55px;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: center;
+  }
+
+  .relics{
+    display: flex;
+  }
+
+  .player-items{
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 30px 30px 30px 30px;
+    margin: 0;
+  }
+
+  .players{
+    font-size: .55rem;
+  }
+
+  .player-items{
+    justify-content: center;
+  }
+
+  .conquest-container{
+    width: min-content;
+    justify-self: center;
+    margin-bottom: .5rem;
+  }
+
+  .siege-container{
+    width: min-content;
+    justify-self: center;
+    margin-bottom: .5rem;
+  }
+
+  .joust-container{
+    width: min-content;
+    justify-self: center;
+    margin-bottom: .5rem;
+  }
+
+  .duel-container{
+    width: min-content;
+    justify-self: center;
+    margin-bottom: .5rem;
+  }
+  
+  .conquest-container div.players:nth-child(1){
+    
+    border-top: .1rem solid rgb(19, 99, 19);
+    border-left: .1rem solid rgb(77, 131, 77);
+  }
+  .conquest-container div.players:nth-child(2){
+   
+    border-left: .1rem solid rgb(19, 99, 19);
+  }
+  .conquest-container div.players:nth-child(3){
+  
+    border-left: .1rem solid rgb(19, 99, 19);
+  }
+  .conquest-container div.players:nth-child(4){
+    
+    border-left: .1rem solid rgb(19, 99, 19);
+  }
+  .conquest-container div.players:nth-child(5){
+    
+    border-left: .1rem solid rgb(19, 99, 19);
+    border-bottom: .1rem solid rgb(19, 99, 19);
+  }
+  
+  
+  .conquest-container div.players:nth-child(6){
+
+    border-top: .1rem solid rgb(179, 31, 31);
+    border-right: .1rem solid rgb(179, 31, 31);
+  }
+  .conquest-container div.players:nth-child(7){
+   
+    border-right: .1rem solid rgb(179, 31, 31);
+  }
+  .conquest-container div.players:nth-child(8){
+  
+    border-right: .1rem solid rgb(179, 31, 31);
+  }
+  .conquest-container div.players:nth-child(9){
+    
+    border-right: .1rem solid rgb(179, 31, 31);
+  }
+  .conquest-container div.players:nth-child(10){
+  
+    border-bottom: .1rem solid rgb(179, 31, 31);
+    border-right: .1rem solid rgb(179, 31, 31);
+  }
+
+  
+  .siege-container div.players:nth-child(1){
+   
+    border-top: .1rem solid rgb(19, 99, 19);
+    border-left: .1rem solid rgb(19, 99, 19);
+  }
+  .siege-container div.players:nth-child(2){
+  
+    border-left: .1rem solid rgb(19, 99, 19);
+  }
+  .siege-container div.players:nth-child(3){
+    
+    border-left: .1rem solid rgb(19, 99, 19);
+  }
+  .siege-container div.players:nth-child(4){
+   
+    border-bottom: .1rem solid rgb(19, 99, 19);
+    border-left: .1rem solid rgb(19, 99, 19);
+  }
+  
+  
+  
+  .siege-container div.players:nth-child(5){
+    
+    border-top: .1rem solid rgb(179, 31, 31);
+    border-right: .1rem solid rgb(179, 31, 31);
+  }
+  .siege-container div.players:nth-child(6){
+    
+    border-right: .1rem solid rgb(179, 31, 31);
+  }
+  .siege-container div.players:nth-child(7){
+    
+    border-right: .1rem solid rgb(179, 31, 31);
+  }
+  .siege-container div.players:nth-child(8){
+
+    border-bottom: .1rem solid rgb(179, 31, 31);
+    border-right: .1rem solid rgb(179, 31, 31);
+  }
+ 
+  
+  .joust-container div.players:nth-child(1){
+  
+    border-top: .1rem solid rgb(19, 99, 19);
+    border-left: .1rem solid rgb(19, 99, 19);
+  }
+  .joust-container div.players:nth-child(2){
+   
+    border-left: .1rem solid rgb(19, 99, 19);
+  }
+  .joust-container div.players:nth-child(3){
+  
+    border-bottom: .1rem solid rgb(19, 99, 19);
+    border-left: .1rem solid rgb(19, 99, 19);
+  }
+  
+  
+  
+  
+  .joust-container div.players:nth-child(4){
+ 
+    border-top: .1rem solid rgb(179, 31, 31);
+    border-right: .1rem solid rgb(179, 31, 31);
+  }
+  .joust-container div.players:nth-child(5){
+    
+    border-right: .1rem solid rgb(179, 31, 31);
+  }
+  .joust-container div.players:nth-child(6){
+    
+    border-bottom: .1rem solid rgb(179, 31, 31);
+    border-right: .1rem solid rgb(179, 31, 31);
+  }
+  
+  .duel-container div.players:nth-child(1){
+ 
+    border-top: .1rem solid rgb(19, 99, 19);
+    border-bottom: .1rem solid rgb(19, 99, 19);
+    border-left: .1rem solid rgb(19, 99, 19);
+  }
+  
+  .duel-container div.players:nth-child(2){
+ 
+    border-top: .1rem solid rgb(179, 31, 31);
+    border-bottom: .1rem solid rgb(179, 31, 31);
+    border-right: .1rem solid rgb(179, 31, 31);
+  }
 }
 
-/*Moblie*/
-@media screen and (min-width: 650px) and (max-width: 800px) {
+/*Tablets*//*Tablets*//*Tablets*//*Tablets*//*Tablets*/
+@media screen and (min-width: 500px) and (max-width: 1095px) {
   /*Header Menu */
   .btn{
     border: .3rem ridge #ba8c59;
@@ -1627,6 +2249,223 @@ justify-content: space-between;
     font-size: .7rem;
     padding: .5rem;
     top: -70px;
+  }
+
+  /*Player History*/
+  .recent_history{
+    width: 85vw;
+  }
+  
+  .match{
+    font-size: .8rem;
+    width:82vw ;
+    grid-template-columns: 1fr;
+    padding: 0;
+    
+  }
+
+  .title{
+    margin: .5rem;
+  }
+
+  .ownPlayer{
+    width: 100%;
+    text-align: center;
+    max-width: max-content;
+    margin-top: 0;
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: .5rem;
+  }
+
+  .items{
+    gap: 2px;
+    width: 84vw;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 55px 55px 55px 55px;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: center;
+  }
+
+  .relics{
+    display: flex;
+  }
+
+  .player-items{
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 30px 30px 30px 30px;
+    margin: 0;
+  }
+
+  .players{
+    font-size: 1rem;
+  }
+
+  .player-items{
+    justify-content: center;
+  }
+
+  .conquest-container{
+    width: min-content;
+    justify-self: center;
+    margin-bottom: .5rem;
+  }
+
+  .siege-container{
+    width: min-content;
+    justify-self: center;
+    margin-bottom: .5rem;
+  }
+
+  .joust-container{
+    width: min-content;
+    justify-self: center;
+    margin-bottom: .5rem;
+  }
+
+  .duel-container{
+    width: min-content;
+    justify-self: center;
+    margin-bottom: .5rem;
+  }
+  
+  .conquest-container div.players:nth-child(1){
+    
+    border-top: .1rem solid rgb(19, 99, 19);
+    border-left: .1rem solid rgb(77, 131, 77);
+  }
+  .conquest-container div.players:nth-child(2){
+   
+    border-left: .1rem solid rgb(19, 99, 19);
+  }
+  .conquest-container div.players:nth-child(3){
+  
+    border-left: .1rem solid rgb(19, 99, 19);
+  }
+  .conquest-container div.players:nth-child(4){
+    
+    border-left: .1rem solid rgb(19, 99, 19);
+  }
+  .conquest-container div.players:nth-child(5){
+    
+    border-left: .1rem solid rgb(19, 99, 19);
+    border-bottom: .1rem solid rgb(19, 99, 19);
+  }
+  
+  
+  .conquest-container div.players:nth-child(6){
+
+    border-top: .1rem solid rgb(179, 31, 31);
+    border-right: .1rem solid rgb(179, 31, 31);
+  }
+  .conquest-container div.players:nth-child(7){
+   
+    border-right: .1rem solid rgb(179, 31, 31);
+  }
+  .conquest-container div.players:nth-child(8){
+  
+    border-right: .1rem solid rgb(179, 31, 31);
+  }
+  .conquest-container div.players:nth-child(9){
+    
+    border-right: .1rem solid rgb(179, 31, 31);
+  }
+  .conquest-container div.players:nth-child(10){
+  
+    border-bottom: .1rem solid rgb(179, 31, 31);
+    border-right: .1rem solid rgb(179, 31, 31);
+  }
+
+  
+  .siege-container div.players:nth-child(1){
+   
+    border-top: .1rem solid rgb(19, 99, 19);
+    border-left: .1rem solid rgb(19, 99, 19);
+  }
+  .siege-container div.players:nth-child(2){
+  
+    border-left: .1rem solid rgb(19, 99, 19);
+  }
+  .siege-container div.players:nth-child(3){
+    
+    border-left: .1rem solid rgb(19, 99, 19);
+  }
+  .siege-container div.players:nth-child(4){
+   
+    border-bottom: .1rem solid rgb(19, 99, 19);
+    border-left: .1rem solid rgb(19, 99, 19);
+  }
+  
+  
+  
+  .siege-container div.players:nth-child(5){
+    
+    border-top: .1rem solid rgb(179, 31, 31);
+    border-right: .1rem solid rgb(179, 31, 31);
+  }
+  .siege-container div.players:nth-child(6){
+    
+    border-right: .1rem solid rgb(179, 31, 31);
+  }
+  .siege-container div.players:nth-child(7){
+    
+    border-right: .1rem solid rgb(179, 31, 31);
+  }
+  .siege-container div.players:nth-child(8){
+
+    border-bottom: .1rem solid rgb(179, 31, 31);
+    border-right: .1rem solid rgb(179, 31, 31);
+  }
+ 
+  
+  .joust-container div.players:nth-child(1){
+  
+    border-top: .1rem solid rgb(19, 99, 19);
+    border-left: .1rem solid rgb(19, 99, 19);
+  }
+  .joust-container div.players:nth-child(2){
+   
+    border-left: .1rem solid rgb(19, 99, 19);
+  }
+  .joust-container div.players:nth-child(3){
+  
+    border-bottom: .1rem solid rgb(19, 99, 19);
+    border-left: .1rem solid rgb(19, 99, 19);
+  }
+  
+  
+  
+  
+  .joust-container div.players:nth-child(4){
+ 
+    border-top: .1rem solid rgb(179, 31, 31);
+    border-right: .1rem solid rgb(179, 31, 31);
+  }
+  .joust-container div.players:nth-child(5){
+    
+    border-right: .1rem solid rgb(179, 31, 31);
+  }
+  .joust-container div.players:nth-child(6){
+    
+    border-bottom: .1rem solid rgb(179, 31, 31);
+    border-right: .1rem solid rgb(179, 31, 31);
+  }
+  
+  .duel-container div.players:nth-child(1){
+ 
+    border-top: .1rem solid rgb(19, 99, 19);
+    border-bottom: .1rem solid rgb(19, 99, 19);
+    border-left: .1rem solid rgb(19, 99, 19);
+  }
+  
+  .duel-container div.players:nth-child(2){
+ 
+    border-top: .1rem solid rgb(179, 31, 31);
+    border-bottom: .1rem solid rgb(179, 31, 31);
+    border-right: .1rem solid rgb(179, 31, 31);
   }
 }
 

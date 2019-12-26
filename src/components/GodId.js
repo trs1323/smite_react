@@ -22,7 +22,12 @@ const LoadingIndicator = props => {
 export default class GodId extends Component {
     constructor(props) {
         super(props);
-        this.state = { api: 'getgods', api2: 'getgodrecommendeditems', api3: 'getitems', api4: 'getgodskins', api5: 'getesportsproleaguedetails', lang: '1', active: 'true', build: 'true', loaded: false }
+        this.state = {
+            api: 'getgods', api2: 'getgodrecommendeditems', api3: 'getitems', api4: 'getgodskins', api5: 'getesportsproleaguedetails', lang: '1', active: 'false', build: 'false', loaded: false,
+            data: this.props.gods.filter((god) => {
+                return god.id == this.props.god_id
+            })
+        }
         this.dropdown = this.dropdown.bind(this);
         this.BuildDropdown = this.BuildDropdown.bind(this);
     }
@@ -34,45 +39,48 @@ export default class GodId extends Component {
             }
         }
         //get god info
-        const signature = md5(`${this.props.devid}${this.state.api}${this.props.authkey}${this.props.timestamp}`);
+        // const signature = md5(`${this.props.devid}${this.state.api}${this.props.authkey}${this.props.timestamp}`);
+        // trackPromise(
+        //     Axios.get(`https://cors-anywhere.herokuapp.com/http://api.smitegame.com/smiteapi.svc/${this.state.api}json/${this.props.devid}/${signature}/${this.props.session}/${this.props.timestamp}/${this.state.lang}`, config)
+        //         .then(res => {
+        //             this.setState({
+        //                 data: res.data.filter((god) => {
+        //                     return god.id == this.props.god_id
+        //                 })
+        //             })
+        //         })
+        //         .catch(err => {
+        //             alert('404 Please try again')
+        //             console.log(err)
+        //         }))
+        //get rec items
+
+        const signature2 = md5(`${this.props.devid}${this.state.api2}${this.props.authkey}${this.props.timestamp}`);
         trackPromise(
-            Axios.get(`https://cors-anywhere.herokuapp.com/http://api.smitegame.com/smiteapi.svc/${this.state.api}json/${this.props.devid}/${signature}/${this.props.session}/${this.props.timestamp}/${this.state.lang}`, config)
+            Axios.get(`https://cors-anywhere.herokuapp.com/http://api.smitegame.com/smiteapi.svc/${this.state.api2}json/${this.props.devid}/${signature2}/${this.props.session}/${this.props.timestamp}/${this.props.god_id}/${this.state.lang}`, config)
                 .then(res => {
                     this.setState({
-                        data: res.data.filter((god) => {
-                            return god.id == this.props.god_id
+                        RecItems: res.data.filter((item) => {
+                            return item.Role == "Standard"
                         })
                     })
-                })
-                .catch(err => {
-                    alert('404 Please try again')
-                    console.log(err)
-                }))
-        //get rec items
-        const signature2 = md5(`${this.props.devid}${this.state.api2}${this.props.authkey}${this.props.timestamp}`);
-        Axios.get(`https://cors-anywhere.herokuapp.com/http://api.smitegame.com/smiteapi.svc/${this.state.api2}json/${this.props.devid}/${signature2}/${this.props.session}/${this.props.timestamp}/${this.props.god_id}/${this.state.lang}`)
-            .then(res => {
-                this.setState({
-                    RecItems: res.data.filter((item) => {
-                        return item.Role == "Standard"
+                    this.setState({
+                        StarterItems: this.state.RecItems.filter((item) => {
+                            return item.Category === "Starter"
+                        }),
+                        CoreItems: this.state.RecItems.filter((item) => {
+                            return item.Category === "Core"
+                        }),
+                        DamageItems: this.state.RecItems.filter((item) => {
+                            return item.Category === "Damage"
+                        }),
+                        DefensiveItems: this.state.RecItems.filter((item) => {
+                            return item.Category === "Defensive"
+                        })
                     })
-                })
-                this.setState({
-                    StarterItems: this.state.RecItems.filter((item) => {
-                        return item.Category === "Starter"
-                    }),
-                    CoreItems: this.state.RecItems.filter((item) => {
-                        return item.Category === "Core"
-                    }),
-                    DamageItems: this.state.RecItems.filter((item) => {
-                        return item.Category === "Damage"
-                    }),
-                    DefensiveItems: this.state.RecItems.filter((item) => {
-                        return item.Category === "Defensive"
-                    })
-                })
 
-            })
+                })
+        )
         //get all items 
         const signature3 = md5(`${this.props.devid}${this.state.api3}${this.props.authkey}${this.props.timestamp}`);
         Axios.get(`https://cors-anywhere.herokuapp.com/http://api.smitegame.com/smiteapi.svc/${this.state.api3}json/${this.props.devid}/${signature3}/${this.props.session}/${this.props.timestamp}/${this.state.lang}`)
@@ -151,7 +159,7 @@ export default class GodId extends Component {
                 <Header />
                 <div className="godid-container">
                     <LoadingIndicator />
-                    {this.state && this.state.data && this.state.AllItems &&
+                    {this.state && this.state.data && this.state.AllItems && this.state.skins && this.state.RecItems && this.state.DamageItems && this.state.DefensiveItems && this.state.StarterItems &&
                         <div className="godid">
                             <div className='god-lore'>
                                 <div className='god-profile'>

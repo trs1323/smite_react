@@ -9,6 +9,8 @@ import Loader from 'react-loader-spinner';
 import PieChart from 'react-minimal-pie-chart';
 import Header from './layout/Header'
 import Footer from './layout/Footer';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faChevronRight } from '@fortawesome/free-solid-svg-icons'
 
 //loading bar
 const LoadingIndicator = props => {
@@ -224,18 +226,107 @@ export default class Player extends Component {
                 'Access-Control-Allow-Origin': '*',
             }
         }
+
         const signature = md5(`${this.props.devid}${this.state.api}${this.props.authkey}${this.props.timestamp}`)
-        trackPromise(
-            Axios.get(`https://cors-anywhere.herokuapp.com/http://api.smitegame.com/smiteapi.svc/${this.state.api}json/${this.props.devid}/${signature}/${this.props.session}/${this.props.timestamp}/${this.props.player_id}`, config)
-                .then(res => {
-                    this.setState({
-                        res: res.data[0]
+
+        if (this.props.player_id == this.props.playerInfo.Id) {
+            this.setState({
+                res: this.props.playerInfo
+            })
+        } else (
+            trackPromise(
+                Axios.get(`https://cors-anywhere.herokuapp.com/http://api.smitegame.com/smiteapi.svc/${this.state.api}json/${this.props.devid}/${signature}/${this.props.session}/${this.props.timestamp}/${this.props.player_id}`, config)
+                    .then(res => {
+                        this.setState({
+                            res: res.data[0]
+                        })
+                        this.props.playerInfo(this.state.res)
+                        //Rank Conquest History
+                        var signature5 = md5(`${this.props.devid}${this.state.api5}${this.props.authkey}${this.props.timestamp}`)
+                        if (this.state.res.RankedConquestController.Season === 6) {
+
+                            Axios.get(`https://cors-anywhere.herokuapp.com/http://api.smitegame.com/smiteapi.svc/${this.state.api5}json/${this.props.devid}/${signature5}/${this.props.session}/${this.props.timestamp}/${this.props.player_id}/504
+        `, config)
+                                .then(res => {
+                                    this.setState({
+                                        RankedConquestHistory: res.data
+                                    })
+                                })
+                                .catch(err => {
+                                    console.log(err)
+                                })
+                        } else (
+
+                            Axios.get(`https://cors-anywhere.herokuapp.com/http://api.smitegame.com/smiteapi.svc/${this.state.api5}json/${this.props.devid}/${signature5}/${this.props.session}/${this.props.timestamp}/${this.props.player_id}/451
+        `, config)
+                                .then(res => {
+                                    this.setState({
+                                        RankedConquestHistory: res.data
+                                    })
+                                })
+                                .catch(err => {
+                                    console.log(err)
+                                })
+                        )
+                        //Rank Joust History
+                        var signature5 = md5(`${this.props.devid}${this.state.api5}${this.props.authkey}${this.props.timestamp}`)
+                        if (this.state.res.RankedJoustController.Season === 6) {
+                            Axios.get(`https://cors-anywhere.herokuapp.com/http://api.smitegame.com/smiteapi.svc/${this.state.api5}json/${this.props.devid}/${signature5}/${this.props.session}/${this.props.timestamp}/${this.props.player_id}/503
+        `, config)
+                                .then(res => {
+                                    this.setState({
+                                        RankedJoustHistory: res.data
+                                    })
+                                })
+                                .catch(err => {
+                                    console.log(err)
+                                })
+                        } else (
+                            Axios.get(`https://cors-anywhere.herokuapp.com/http://api.smitegame.com/smiteapi.svc/${this.state.api5}json/${this.props.devid}/${signature5}/${this.props.session}/${this.props.timestamp}/${this.props.player_id}/450
+        `, config)
+                                .then(res => {
+                                    this.setState({
+                                        RankedJoustHistory: res.data
+                                    })
+                                })
+                                .catch(err => {
+                                    console.log(err)
+                                })
+                        )
+                        //Rank Duel History
+                        var signature5 = md5(`${this.props.devid}${this.state.api5}${this.props.authkey}${this.props.timestamp}`)
+                        if (this.state.res.RankedDuelController.Season === 6) {
+                            Axios.get(`https://cors-anywhere.herokuapp.com/http://api.smitegame.com/smiteapi.svc/${this.state.api5}json/${this.props.devid}/${signature5}/${this.props.session}/${this.props.timestamp}/${this.props.player_id}/502
+        `, config)
+                                .then(res => {
+                                    this.setState({
+                                        RankedDuelHistory: res.data
+                                    })
+                                })
+                                .catch(err => {
+                                    console.log(err)
+                                })
+                        } else (
+                            Axios.get(`https://cors-anywhere.herokuapp.com/http://api.smitegame.com/smiteapi.svc/${this.state.api5}json/${this.props.devid}/${signature5}/${this.props.session}/${this.props.timestamp}/${this.props.player_id}/440
+        `, config)
+                                .then(res => {
+                                    this.setState({
+                                        RankedDuelHistory: res.data
+                                    })
+                                })
+                                .catch(err => {
+                                    console.log(err)
+                                })
+                        )
+
                     })
-                })
-                .catch(err => {
-                    alert('404 Please try again')
-                    console.log(err)
-                })
+
+                    .catch(err => {
+                        alert('404 Please try again')
+                        console.log(err)
+                    })
+            )
+
         )
 
         const signature2 = md5(`${this.props.devid}${this.state.api2}${this.props.authkey}${this.props.timestamp}`)
@@ -247,7 +338,6 @@ export default class Player extends Component {
                     })
                 })
                 .catch(err => {
-                    alert('404 Please try again')
                     console.log(err)
                 })
         )
@@ -260,7 +350,6 @@ export default class Player extends Component {
                     })
                 })
                 .catch(err => {
-                    alert('404 Please try again')
                     console.log(err)
                 })
         )
@@ -273,7 +362,6 @@ export default class Player extends Component {
                     })
                 })
                 .catch(err => {
-                    alert('404 Please try again')
                     console.log(err)
                 })
         )
@@ -287,12 +375,11 @@ export default class Player extends Component {
                     })
                 })
                 .catch(err => {
-                    alert(err)
                     console.log(err)
                 })
         )
         //Joust History
-        signature5 = md5(`${this.props.devid}${this.state.api5}${this.props.authkey}${this.props.timestamp}`)
+
         Axios.get(`https://cors-anywhere.herokuapp.com/http://api.smitegame.com/smiteapi.svc/${this.state.api5}json/${this.props.devid}/${signature5}/${this.props.session}/${this.props.timestamp}/${this.props.player_id}/448`, config)
             .then(res => {
                 this.setState({
@@ -300,12 +387,11 @@ export default class Player extends Component {
                 })
             })
             .catch(err => {
-                alert(err)
                 console.log(err)
             })
 
         //Arena History
-        signature5 = md5(`${this.props.devid}${this.state.api5}${this.props.authkey}${this.props.timestamp}`)
+
         Axios.get(`https://cors-anywhere.herokuapp.com/http://api.smitegame.com/smiteapi.svc/${this.state.api5}json/${this.props.devid}/${signature5}/${this.props.session}/${this.props.timestamp}/${this.props.player_id}/435`, config)
             .then(res => {
                 this.setState({
@@ -313,12 +399,11 @@ export default class Player extends Component {
                 })
             })
             .catch(err => {
-                alert(err)
                 console.log(err)
             })
 
         //Assalt History
-        signature5 = md5(`${this.props.devid}${this.state.api5}${this.props.authkey}${this.props.timestamp}`)
+
         Axios.get(`https://cors-anywhere.herokuapp.com/http://api.smitegame.com/smiteapi.svc/${this.state.api5}json/${this.props.devid}/${signature5}/${this.props.session}/${this.props.timestamp}/${this.props.player_id}/445`, config)
             .then(res => {
                 this.setState({
@@ -326,12 +411,11 @@ export default class Player extends Component {
                 })
             })
             .catch(err => {
-                alert(err)
                 console.log(err)
             })
 
         //Clash History
-        signature5 = md5(`${this.props.devid}${this.state.api5}${this.props.authkey}${this.props.timestamp}`)
+
         Axios.get(`https://cors-anywhere.herokuapp.com/http://api.smitegame.com/smiteapi.svc/${this.state.api5}json/${this.props.devid}/${signature5}/${this.props.session}/${this.props.timestamp}/${this.props.player_id}/466`, config)
             .then(res => {
                 this.setState({
@@ -339,12 +423,10 @@ export default class Player extends Component {
                 })
             })
             .catch(err => {
-                alert(err)
                 console.log(err)
             })
 
         //Siege History
-        signature5 = md5(`${this.props.devid}${this.state.api5}${this.props.authkey}${this.props.timestamp}`)
         Axios.get(`https://cors-anywhere.herokuapp.com/http://api.smitegame.com/smiteapi.svc/${this.state.api5}json/${this.props.devid}/${signature5}/${this.props.session}/${this.props.timestamp}/${this.props.player_id}/459`, config)
             .then(res => {
                 this.setState({
@@ -352,7 +434,6 @@ export default class Player extends Component {
                 })
             })
             .catch(err => {
-                alert(err)
                 console.log(err)
             })
 
@@ -528,6 +609,9 @@ export default class Player extends Component {
         const Assault = Object.values(this.state.AssaltHistory).reduce((t, { Matches }) => t + Matches, 0);
         const Clash = Object.values(this.state.ClashHistory).reduce((t, { Matches }) => t + Matches, 0);
         const Siege = Object.values(this.state.SiegeHistory).reduce((t, { Matches }) => t + Matches, 0);
+        const RankConquest = Object.values(this.state.RankedConquestHistory).reduce((t, { Matches }) => t + Matches, 0);
+        const RankJoust = Object.values(this.state.RankedJoustHistory).reduce((t, { Matches }) => t + Matches, 0);
+        const RankDuel = Object.values(this.state.RankedDuelHistory).reduce((t, { Matches }) => t + Matches, 0);
         return (
             <div className="match-history">
                 <h1>Match History</h1>
@@ -538,6 +622,7 @@ export default class Player extends Component {
                     cx={50}
                     cy={50}
                     data={[
+
                         {
                             color: '#2a374a',
                             title: 'Conquest',
@@ -554,6 +639,21 @@ export default class Player extends Component {
                             value: Arena
                         },
                         {
+                            color: '#a4d260',
+                            title: 'Ranked Conquest',
+                            value: RankConquest
+                        },
+                        {
+                            color: '#6a77a4',
+                            title: 'Ranked Joust',
+                            value: RankJoust
+                        },
+                        {
+                            color: '#6fb1a3',
+                            title: 'Duel',
+                            value: RankDuel
+                        },
+                        {
                             color: '#e3aa25',
                             title: 'Assault',
                             value: Assault
@@ -564,10 +664,11 @@ export default class Player extends Component {
                             value: Clash
                         },
                         {
-                            color: '#a4d260',
+                            color: '#564162',
                             title: 'Siege',
                             value: Siege
                         }
+
                     ]}
                     label={props => {
                         return `${props.data[props.dataIndex].title}-${props.data[props.dataIndex].value}`;
@@ -619,15 +720,22 @@ export default class Player extends Component {
                                         <p>Winrate: {((this.state.res.Wins / (this.state.res.Wins + this.state.res.Losses)) * 100).toFixed(2)}%</p>
                                     </div>
                                 </div>
-                                {this.state && this.state.ConquestHistory && this.state.ArenaHistory && this.state.JoustHistory && this.state.AssaltHistory && this.state.ClashHistory && this.state.SiegeHistory &&
+                                {this.state && this.state.ConquestHistory && this.state.ArenaHistory && this.state.JoustHistory && this.state.AssaltHistory && this.state.ClashHistory && this.state.SiegeHistory && this.state.RankedConquestHistory && this.state.RankedDuelHistory && this.state.RankedJoustHistory &&
                                     <div className='match-history-container'>
-                                        {this.AddMatchs()}</div>}
+                                        {this.AddMatchs()}
+                                        <div className="match-history-link">
+                                            <Link to='/player_history'>Match History <FontAwesomeIcon icon={faChevronRight} /></Link>
+                                        </div>
+                                    </div>}
                                 <div className="rank-container">
                                     <h1>Rank</h1>
                                     <div className="ranked">
                                         {this.CheckRankConquest()}
                                         {this.CheckRankJoust()}
                                         {this.CheckRankDuel()}
+                                    </div>
+                                    <div className="rank-history-link">
+                                        <Link to='/player_rank_history'>Rank Match History <FontAwesomeIcon icon={faChevronRight} /></Link>
                                     </div>
                                 </div>
                             </div>
