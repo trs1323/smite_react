@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "7c1247bdbe3c6c5e9fadd366167b30bd",
+    "revision": "28eb153f40ec56f1c6099bf99948114a",
     "url": "/smite_react/index.html"
   },
   {
-    "revision": "3aac462d5e64c849446d",
+    "revision": "29592a62bdaceb2eb55e",
     "url": "/smite_react/static/css/2.2551bc91.chunk.css"
   },
   {
-    "revision": "96186c013d62f31b8516",
-    "url": "/smite_react/static/css/main.eb22969f.chunk.css"
+    "revision": "a2ce0135d0a043ac8c42",
+    "url": "/smite_react/static/css/main.0812d177.chunk.css"
   },
   {
-    "revision": "3aac462d5e64c849446d",
-    "url": "/smite_react/static/js/2.05d85b71.chunk.js"
+    "revision": "29592a62bdaceb2eb55e",
+    "url": "/smite_react/static/js/2.f9fa40bb.chunk.js"
   },
   {
-    "revision": "96186c013d62f31b8516",
-    "url": "/smite_react/static/js/main.30c3195a.chunk.js"
+    "revision": "a2ce0135d0a043ac8c42",
+    "url": "/smite_react/static/js/main.e626c3bf.chunk.js"
   },
   {
     "revision": "45f646061ce60b3e44ca",
@@ -344,8 +344,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/smite_react/static/media/esport.17cf5d4a.png"
   },
   {
-    "revision": "d06bfca686c3b5896f9abb72f87de0dd",
-    "url": "/smite_react/static/media/new-patch.d06bfca6.jpg"
+    "revision": "b9d43043f53196aa9c620d90a6f59076",
+    "url": "/smite_react/static/media/new-patch.b9d43043.png"
   },
   {
     "revision": "d7b89931be99d9d6c5af82d4c6dc63e5",
