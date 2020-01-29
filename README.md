@@ -1,4 +1,9 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Using The Site
+Smite is a online video game. Using the API they provide, you can find stats about players and information about the game. 
+
+If you click on Players, type in my username, Tannersucks, you can see all the information they have about me.
+
+
 
 ## Available Scripts
 
