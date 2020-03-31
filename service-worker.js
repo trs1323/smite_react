@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/smite_react/precache-manifest.b69786f859d824d6985c06cbac74bb68.js"
+  "/smite_react/precache-manifest.3b9fa55db7915c2faa4a133be59f4ff3.js"
 );
 
 self.addEventListener('message', (event) => {
