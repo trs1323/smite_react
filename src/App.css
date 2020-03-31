@@ -117,10 +117,12 @@ width: 100%;
   width: 100%;
   border: .5rem ridge #ba8c59;
   box-shadow: 11px 7px 17px 0px rgba(10, 10, 10, 0.308);
+  transition: .3s;
 }
 
 .patch-notes img:hover{
   border: .5rem ridge #9e774a;
+  transition: .3s;
 }
 
 .esports h2{
@@ -134,11 +136,13 @@ width: 100%;
   width: 200px;
   border: .5rem ridge #ba8c59;
   box-shadow: 11px 7px 17px 0px rgba(10, 10, 10, 0.308);
+  transition: .3s;
 }
 
 .esports-img:hover{
   border: .5rem ridge #9e774a;
   background: #253041;
+  transition: .3s;
 }
 
 .patch-title{
@@ -181,11 +185,12 @@ width: 100%;
   height: 100px;
   width: 100px;
   box-shadow: 11px 7px 17px 0px rgba(10, 10, 10, 0.308);
+  transition: .3s;
 }
 
 .free-gods-img:hover{
   border: .3rem ridge #9e774a;
-  
+  transition: .3s;
 }
 
 .see-all-gods{
@@ -196,10 +201,12 @@ width: 100%;
 
 .see-all-gods a{
   color: black;
+  transition: .5s;
 }
 
 .see-all-gods a:hover{
   color: rgb(49, 49, 49);
+  transition: .5s;
 }
 
 .server-container{
@@ -275,12 +282,12 @@ width: 100%;
   background: #2a374a;
   width: 100%;
   border: .5rem ridge #ba8c59;
-  
+  transition: .3s;
 }
 
 .new-god-img:hover{
   border: .5rem ridge #9e774a;
-  
+  transition: .3s;
 }
 
 .new-god-name{
@@ -331,11 +338,12 @@ width: 100%;
   border: .5rem ridge #ba8c59;
   padding:7px ;
   font-weight: 1000;
+  transition: .3s;
 }
 
 .btn:hover{
   background: #34435a;
-  
+  transition: .3s;
 }
 
 .btn a{
@@ -372,10 +380,12 @@ width: 100%;
 .footer a{
   color: #ffcb34;
   text-decoration: none;
+  transition: .3s;
 }
 
 .footer a:hover{
   color: #d3aa2f;
+  transition: .3s;
 }
 
 .footer-img{
@@ -428,9 +438,11 @@ width: 100%;
   background: #2a374a;
   font-size: 1.5rem;
   cursor: pointer;
+  transition: .3s;
 }
 .search-form > form:nth-child(1) > input:nth-child(2):hover{
   background: #34435a;
+  transition: .3s;
 }
 
 .search-result{
@@ -452,7 +464,7 @@ width: 100%;
 
 /*Usernames of search results */
 .nameIcon{
-  
+  transition: .3s;
   display: flex;
  color: black;
   padding-right: 1rem;
@@ -462,7 +474,8 @@ width: 100%;
 }
 
 .nameIcon:hover{
-  background: #e6e6e6
+  background: #e6e6e6;
+  transition: .3s;
 }
 
 .nameIcon img{
@@ -580,12 +593,14 @@ width: 100%;
   border-radius: 10px;
   height: 128px;
   width: 128px;
+  transition: .3s;
 }
 
 .single-god img:hover{
   border: .5rem ridge #9e774a;
   box-shadow: 9px 5px 17px 0px rgba(10, 10, 10, 0.308);
   cursor: pointer;
+  transition: .3s;
 }
 
 .class{
@@ -600,12 +615,14 @@ width: 100%;
   height:15px;
   width: 15px;
   cursor: default;
+  transition: .3s;
 }
 
 .class img:hover{
   border: 0;
   box-shadow: 0px 0px 0px 0px rgba(10, 10, 10, 0);
   cursor: default;
+  transition: .3s;
 }
 
 .pantheon{
@@ -620,12 +637,14 @@ width: 100%;
   height:15px;
   width: 15px;
   cursor: default;
+  transition: .3s;
 }
 
 .pantheon img:hover{
   border: 0;
   box-shadow: 0px 0px 0px 0px rgba(10, 10, 10, 0);
   cursor: default;
+  transition: .3s;
 }
 
 
@@ -951,10 +970,12 @@ justify-content: space-between;
   background: #2a374a;
   border: .3rem ridge #ba8c59;
   padding: .3rem;
+  transition: .3s;
 }
 
 .match-history-link a:hover{
   background: #34435a;
+  transition: .3s;
 }
 
 .rank-container{
@@ -998,10 +1019,12 @@ justify-content: space-between;
   background: #2a374a;
   border: .3rem ridge #ba8c59;
   padding: .3rem;
+  transition: .3s;
 }
 
 .rank-history-link a:hover{
   background: #34435a;
+  transition: .3s;
 }
 
 .top-gods-title{
@@ -1028,11 +1051,12 @@ justify-content: space-between;
   border: .3rem ridge #ba8c59;
   padding: 5px;
   font-weight: 900;
-  
+  transition: .3s;
 }
 
 .top-god-container a:hover{
   background: #34435a;
+  transition: .3s;
 }
 
 .top-god{
@@ -1121,9 +1145,11 @@ background: #e7e7e7;
   color: black;
   margin-right: 1rem;
   align-items: center;
+  transition: .3s;
 }
 .title a:hover{
   color: rgb(26, 26, 26);
+  transition: .3s;
 }
 
 .match{
@@ -1191,10 +1217,12 @@ letter-spacing: 0.036em;
 
 .players-img a{
   color: black;
+  transition: .3s;
 }
 
 .players-img a:hover{
   color: rgb(26, 26, 26);
+  transition: .3s;
 }
 
 .players-img img{
@@ -1493,11 +1521,13 @@ letter-spacing: 0.036em;
   border-radius: 10px;
   height: 128px;
   width: 128px;
+  transition: .3s;
 }
 
 .single-item img:hover{
   border: .5rem ridge #9e774a;
   box-shadow: 9px 5px 17px 0px rgba(10, 10, 10, 0.308);
+  transition: .3s;
 }
 
 
@@ -1575,10 +1605,12 @@ letter-spacing: 0.036em;
 
   .patch-notes img{
     border: .3rem ridge #ba8c59;
+    transition: .3s;
   }
 
   .patch-notes img:hover{
     border: .3rem ridge #9e774a;
+    transition: .3s;
   }
 
   .patch-title{
@@ -1595,10 +1627,12 @@ letter-spacing: 0.036em;
     width: 150px;
     height: 150px;
     border: .3rem ridge #ba8c59;
+    transition: .3s;
   }
 
   .esports-img:hover{
     border: .3rem ridge #9e774a;
+    transition: .3s;
   }
 
   .esports-container{
@@ -1638,10 +1672,12 @@ letter-spacing: 0.036em;
 
   .new-god-img{
     border: .3rem ridge #ba8c59;
+    transition: .3s;
   }
 
   .new-god-img:hover{
     border: .3rem ridge #9e774a;
+    transition: .3s;
   }
 
   .free-gods{
@@ -1803,10 +1839,12 @@ letter-spacing: 0.036em;
     border: .3rem ridge #ba8c59;
     height: 80px;
     width: 80px;
+    transition: .3s;
   }
 
   .single-god img:hover{
     border: .3rem ridge #9e774a;
+    transition: .3s;
   }
 
   .single-god p{
@@ -1891,10 +1929,12 @@ letter-spacing: 0.036em;
     border-radius: 10px;
     height: 80px;
     width: 80px;
+    transition: .3s;
   }
 
   .single-item img:hover{
     border: .3rem ridge #9e774a;
+    transition: .3s;
   }
 
   .single-item .tooltip{

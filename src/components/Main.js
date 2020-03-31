@@ -49,8 +49,8 @@ export default class Main extends Component {
         Axios.get(`https://cors-anywhere.herokuapp.com/http://api.smitegame.com/smiteapi.svc/createsessionjson/${this.state.devId}/${signature}/${timestamp}`, config)
             .then(res => this.setState({ session: res.data.session_id }))
             .catch(err => {
-                alert('404 Please try again')
-                console.log(err)
+                alert('Api is Down, Using Backup')
+                this.setState({ session: 'DOWN' })
             })
     }
 

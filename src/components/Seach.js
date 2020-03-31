@@ -49,7 +49,7 @@ export default class Seach extends Component {
                     this.setState({ data: res.data })
                 })
                 .catch(err => {
-                    alert('404 Please try again')
+                    alert('API is Down, Sorry :(')
                     console.log(err)
                 }))
     }

@@ -462,7 +462,7 @@ export default class Player extends Component {
 
     //check to see if player plays on console or computer and returns the right one
     CheckRankConquest() {
-        if (this.state.res.RankedConquestController.Season === 6) {
+        if (this.state.res.RankedConquestController.Season === 7) {
             var rank = CheckRankTier(this.state.res.RankedConquestController.Tier)
             var rankName = GetRankTier(this.state.res.RankedConquestController.Tier)
             return (
@@ -476,7 +476,7 @@ export default class Player extends Component {
                     <p>Losses: {this.state.res.RankedConquestController.Losses}</p>
                 </div>
             )
-        } else if (this.state.res.RankedConquest.Season === 6) {
+        } else if (this.state.res.RankedConquest.Season === 7) {
             rank = CheckRankTier(this.state.res.RankedConquest.Tier)
             rankName = GetRankTier(this.state.res.RankedConquest.Tier)
             return (
@@ -507,7 +507,7 @@ export default class Player extends Component {
 
     //check to see if player plays on console or computer and returns the right one
     CheckRankJoust() {
-        if (this.state.res.RankedJoustController.Season === 6) {
+        if (this.state.res.RankedJoustController.Season === 7) {
             var rank = CheckRankTier(this.state.res.RankedJoustController.Tier)
             var rankName = GetRankTier(this.state.res.RankedJoustController.Tier)
             return (
@@ -521,7 +521,7 @@ export default class Player extends Component {
                     <p>Losses: {this.state.res.RankedJoustController.Losses}</p>
                 </div>
             )
-        } else if (this.state.res.RankedJoust.Season === 6) {
+        } else if (this.state.res.RankedJoust.Season === 7) {
             rank = CheckRankTier(this.state.res.RankedJoust.Tier)
             rankName = GetRankTier(this.state.res.RankedJoust.Tier)
             return (
@@ -552,7 +552,7 @@ export default class Player extends Component {
 
     //check to see if player plays on console or computer and returns the right one
     CheckRankDuel() {
-        if (this.state.res.RankedDuelController.Season === 6) {
+        if (this.state.res.RankedDuelController.Season === 7) {
             var rank = CheckRankTier(this.state.res.RankedDuelController.Tier)
             var rankName = GetRankTier(this.state.res.RankedDuelController.Tier)
             return (
@@ -566,7 +566,7 @@ export default class Player extends Component {
                     <p>Losses: {this.state.res.RankedDuelController.Losses}</p>
                 </div>
             )
-        } else if (this.state.res.RankedDuel.Season === 6) {
+        } else if (this.state.res.RankedDuel.Season === 7) {
             rank = CheckRankTier(this.state.res.RankedDuel.Tier)
             rankName = GetRankTier(this.state.res.RankedDuel.Tier)
             return (

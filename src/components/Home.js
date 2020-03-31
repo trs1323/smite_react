@@ -10,6 +10,8 @@ import Header from './layout/Header'
 import Footer from './layout/Footer';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons'
+import Gods from '../backup/gods.json';
+import Server from '../backup/server.json';
 
 
 const LoadingIndicator = props => {
@@ -41,6 +43,7 @@ export default class Home extends Component {
         trackPromise(
             Axios.get(`https://cors-anywhere.herokuapp.com/http://api.smitegame.com/smiteapi.svc/${this.state.api}json/${this.props.devid}/${signature}/${this.props.session}/${this.props.timestamp}/1`, config)
                 .then(res => {
+
                     this.setState({
                         AllGods: res.data,
                         LatestGod: res.data.filter((newGod) => {
@@ -55,8 +58,18 @@ export default class Home extends Component {
                 })
 
                 .catch(err => {
-                    alert('404 Please try again')
                     console.log(err)
+                    this.setState({
+                        AllGods: { Gods }.Gods,
+                        LatestGod: { Gods }.Gods.filter((newGod) => {
+                            return newGod.latestGod === 'y'
+                        }),
+                        WeeklyGods: { Gods }.Gods.filter((free) => {
+                            return free.OnFreeRotation === 'true'
+                        }),
+                        loaded: true
+                    })
+                    this.props.setGods(this.state.AllGods)
                 }))
         const signature2 = md5(`${this.props.devid}${this.state.api2}${this.props.authkey}${this.props.timestamp}`);
         Axios.get(`https://cors-anywhere.herokuapp.com/http://api.smitegame.com/smiteapi.svc/${this.state.api2}json/${this.props.devid}/${signature2}/${this.props.session}/${this.props.timestamp}`, config)
@@ -67,6 +80,9 @@ export default class Home extends Component {
             })
             .catch(err => {
                 console.log(err)
+                this.setState({
+                    serverStatus: { Server }.Server
+                })
             })
 
 

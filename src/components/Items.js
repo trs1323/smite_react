@@ -7,6 +7,7 @@ import { usePromiseTracker } from "react-promise-tracker";
 import Loader from 'react-loader-spinner';
 import Header from './layout/Header'
 import Footer from './layout/Footer';
+import Items from '../backup/items.json'
 
 const LoadingIndicator = props => {
     const { promiseInProgress } = usePromiseTracker();
@@ -73,6 +74,7 @@ export default class Gods extends Component {
         trackPromise(
             Axios.get(`https://cors-anywhere.herokuapp.com/http://api.smitegame.com/smiteapi.svc/${this.state.api}json/${this.props.devid}/${signature}/${this.props.session}/${this.props.timestamp}/${this.state.lang}`, config)
                 .then(res => {
+                    console.log(res.data)
                     this.setState({
                         AllItems: res.data.filter((item) => {
                             return item.ItemTier == 3
@@ -82,8 +84,13 @@ export default class Gods extends Component {
                     })
                 })
                 .catch(err => {
-                    alert('404 Please try again')
-                    console.log(err)
+                    this.setState({
+                        AllItems: { Items }.Items.filter((item) => {
+                            return item.ItemTier == 3
+                        }),
+                        base: { Items }.Items,
+                        loaded: true
+                    })
                 }))
     }
 
